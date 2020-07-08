@@ -4,13 +4,19 @@ html {
 
 body {
   font-size: 1.6rem;
-  color: #000;
+  color: #D8DEE9;
+  background-color: #2E3440;
 }
 
 header {
-  border-bottom: 0.2rem solid #000;
+  border-bottom: 0.2rem solid #D9DEE9;
 }
-
+a:link {
+  color:  #D8DEE9;
+}
+a:visited {
+  color: #81A1C1;
+}
 nav {
   text-align: right;
 }
@@ -18,7 +24,14 @@ nav {
 nav a {
   font-size: 1.8rem;
   font-weight: bold;
-  color: black;
+  color:  #D8DEE9;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+nav a:visited {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color:  #D8DEE9;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -26,9 +39,9 @@ nav a {
 footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
+  border-top: 0.2rem solid #D9DEE9;
   font-size: 1.2rem;
-  color: #555;
+  color: #E5E9F0;
 }
 
 h1 {
@@ -47,7 +60,7 @@ article .header {
 
 .logo a {
   font-weight: bold;
-  color: #000;
+  color: #D9DEE9;
   text-decoration: none;
 }
 
