@@ -1,0 +1,11 @@
+#+TITLE: Thanawat.xyz
+Code for my personal website.
+** How this site is built:
+- [[https://jaspervdj.be/hakyll/index.html][Hakyll - Home]] static site generator
+- [[https://postcss.org/][PostCSS ]]  to generate my css
+- [[https://tailwindcss.com/][Tailwind CSS]] - css framework
+** Build instructions
+- Install cabal with [[https://www.haskell.org/ghcup/][ghcup]]. Then install Hakyll using =cabal install hakyll=
+- Also install =npm= then do =npm install= in this directory
+- build the site using =cabal build=
+- Everytime you want to rebuild the site, do =cabal run site rebuild= or use the genrated =site= executable
