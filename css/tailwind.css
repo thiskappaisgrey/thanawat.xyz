@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
+/* This css applies to all pages(generated with org and pandoc). Uses the postcss-nested plugin to make the heirarchy aparent */
+/* .post { */
+/*     h1 { */
+/*         @apply font-bold text-xl; */
+/*     } */
+/*     h2 { */
+/*         @apply font-bold text-lg; */
+/*     } */
+/*     code { */
+/*         @apply text-black px-4 bg-white border-gray-100 rounded-sm; */
+/*     } */
+
+/*     pre code { */
+/*         @apply block p-2 m-1; */
+/*     } */
+/* } */
 @tailwind utilities;

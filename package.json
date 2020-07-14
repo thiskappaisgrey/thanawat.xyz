@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@tailwindcss/typography": "^0.1.2",
     "autoprefixer": "^9.8.5",
     "postcss-cli": "^7.1.1",
+    "postcss-nested": "^4.2.3",
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {},

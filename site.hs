@@ -15,7 +15,9 @@ main = hakyll $ do
   match "css/tailwind.css" $ do
     route $ constRoute "css/tailwind.css"
     compile compressTailwindCompiler
-
+  match "css/syntax.css" $ do
+    route idRoute
+    compile compressCssCompiler
   match (fromList ["about.org", "contact.org"]) $ do
     route $ setExtension "html"
     compile
@@ -55,7 +57,7 @@ main = hakyll $ do
 
       getResourceBody
         >>= applyAsTemplate indexCtx
-        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        -- >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
   match "templates/*" $ compile templateBodyCompiler
@@ -69,6 +71,5 @@ postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
 -- minifies it (relying on the external 'sass' tool)
 compressTailwindCompiler :: Compiler (Item String)
 compressTailwindCompiler = do
-  fmap (fmap compressCss) $
-    getResourceString
-    >>= withItemBody (unixFilter "npx" ["postcss"])
+  fmap (fmap compressCss) $ getResourceString >>= withItemBody
+    (unixFilter "npx" ["postcss"])
