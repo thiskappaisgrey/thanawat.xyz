@@ -1,0 +1,175 @@
+---
+title: Emacs installation guide
+---
+* Preface
+Everything I'll be showing you in my videos will look difficult. Perhaps it'll
+look like I'm doing magic! However, whether in fiction or in real life, magic
+follows rules and conventions that its practitioners study, in order to come up
+with formulas that manipulate those rules and conventions to perform the
+"spectacles" that people call "magic". To the uneducated eye, such spectacles
+might seem like an impossible task for them! Some will think to themselves:
+"There's no way I can perform this magic because I am not as capable as those
+magicians! There must be something differentiating me from them, surely!".
+Perhaps, there is. After all, we're not all born into the same circumstances.
+Maybe in fiction, there are only certain types of people who can perform magic.
+Maybe in real life, there are certain qualities and circumstances that allow a
+selective group to perform certain spectacles that the common person can never
+hope to achieve! However, given the right resources and having the right amount
+of interest in a topic, certain people, uneducated in what they think is "magic"
+can learn these rules and conventions. They can struggle through coming up with
+their own formulas to manipulate these rules and conventions. Over time, what
+was once "magic" to them becomes mere "formulas".
+* Introduction to Emacs
+This is just me ranting for 20 minutes and giving you some context into what
+Emacs is, some of the history of it, and why you would want to use it. You can
+watch this video for more information or if you're confused in my Demos, but
+this is entirely optional(sidenote, if you are going to watch this video, do
+note that the audio is a lot quieter than that of the other videos! Sorry!).
+This guide is mainly aimed at non-programmers, however Doom Emacs is a great
+code editor too!
+#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/jJGHPhvx_tQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+** More information:
+- Learn more about [[https://www.gnu.org/software/emacs/][Emacs]].
+- Read the [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org][Getting started with Doom-Emacs]] guide
+- Read the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Emacs manual]] and the [[https://orgmode.org/manual/index.html][org-mode manual]]. Personally never read it.. :D
+  - You can also check out the manual within Emacs by pressing =SPC h i= and clicking on
+    the topics that you want to know more about(or use your vim-keys(you can go
+    to the next page of a manual by doing =C-j= or =C-k=, =C= stands for Control,
+    =M= stands for "meta" or "alt")
+- Before installing Doom Emacs(or after), check out my Overview of Emacs and my Evil-tutor
+  walkthrough on why you should even bother with it!
+* Check out an overview of Emacs Here:
+#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/am87rOOSZW4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+- Also check out this [[https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj][video series on Doom Emacs and Org-mode]].
+- More on Buffers and Windows(didn't really explain it that well, this is from
+  the video series): [[https://www.youtube.com/watch?v=AL1ypvJ5yAQ&list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&index=5&t=0s][Emacs Doom E04 - Buffers, Windows and Basic Navigation]]
+* Emacs installation guide
+Take a look below the video for more information! I made a small mistake in my video
+and didn't make you install =llvm=. Also do =scoop install llvm= (it worked
+without llvm, but install it just in case..).
+#+HTML:<div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/f8TGLVveDaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+** A summary of the installation process.
+What you are going to be doing to install Emacs is first by installing a package
+manager, which is a piece of software that allows you to install "packages"(or
+Apps) using the command-line. You can find more information about the package
+manager you'll be installing in your Operating System. Most of the time, you
+should probably never do things that you don't understand, especially on your
+computer! Get a rough understanding at what a package manager does, and what
+I'm doing in these steps I gave you.
+** Installing on MacOS
+I don't have access to a Mac computer, so I can't show you the installation in
+video. I will leave text instructions here for installing on MacOS. You can
+install on MacOS using a similar process to what I showed in the video, but
+Emacs should work a lot better on MacOS because it's a UNIX based system. The
+main difference to the installation process is that rather than using the
+=scoop= package manager, you would use [[https://brew.sh/][Homebrew]]. You can
+install homebrew by opening your Terminal application(search for it using the
+MacOS app search bar) and typing in:
+#+BEGIN_SRC sh
+# This line is a comment. The next line is the command to install the Homebrew Package manager
+# You might have to enter your password. Make sure you're the admistrator on your system.
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+# Make sure to press ENTER, and wait for the installation to finish
+# Type this line in, and press ENTER. Wait for installation to finish, and voila!
+brew cask install emacs
+#+END_SRC
+The first command will run this [[https://raw.githubusercontent.com/Homebrew/install/master/install.sh][script]]. Look over the script to get a rough idea
+at what the script is doing. On another note, I haven't used brew for a couple
+of months, of the second command fails, try one of the other options in this
+[[https://www.emacswiki.org/emacs/EmacsForMacOS#toc14][article]].
+** Windows Installation
+If you don't want to use scoop, try [[https://chocolatey.org/install][Chocolatey]]. Scoop's just a little easier to
+install(one less step). You can also not use a package manager(if you can't for
+some reason) by downloading [[https://gitforwindows.org/][git]] and following these [[https://earvingad.github.io/posts/doom_emacs_windows/][instructions]]. I've installed
+Emacs using all three of these options, ask me for help if needed. More (on the
+Scoop installation process) in the video! A step by step guide is:
+1. Install the [[https://github.com/lukesampson/scoop][Scoop]] package manager.
+   1. Open up PowerShell
+   2. Type the following commands. into powershell. NOTE: You can find out more
+      about execution policies [[https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7][here]] and about the script that you'll about to be
+      running [[https://raw.githubusercontent.com/lukesampson/scoop/master/bin/install.ps1][here(you don't have to read/understand this script, but it's good
+      practice to)]]
+     #+BEGIN_SRC powershell
+# This line is a comment. Type the next line into Powershell.
+# Find out more about execution policies here: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# This installs the scoop package manager
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+      #+END_SRC
+2. Install by typing the following line into your shell!
+   #+BEGIN_SRC sh
+# This command installs git(use in powershell)
+scoop install git
+# Use git-bash(open it up, like in the video) to install emacs
+# This installs Emacs and Doom's required programs. Install git before Emacs so it installs faster!
+# I forgot to install llvm in the video, make sure you install it anyways
+
+# adds the "extras" bucket
+scoop bucket add extras
+scoop install emacs ripgrep fd llvm
+   #+END_SRC
+3. Change your environment variables! (Check 25:50 in the video.)
+4. Install Doom-emacs
+   #+BEGIN_SRC sh
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+# This might take a while.
+~/.emacs.d/bin/doom install
+   #+END_SRC
+* Installing Extra Programs(latex + Anki)
+#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/aV0BkzGsaTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+** MacOS
+*** Latex
+There are two options that you can do to install Latex on MacOS. The first one
+is a little more involved, but saves a lot of disk space. The second one will
+take up 3GB of disk space, and installs a lot of stuff(like a latex editor, you
+don't need this because you're already using Emacs!) that you don't need! I will
+give you these two options and let you choose.
+**** Option 1
+Latex has its own package manager(just like your OS and Emacs). If you install
+=basictex=, some packages might not be installed. The first time I exported to
+pdf on Windows, Doom Emacs actually went out and installed these packages for
+me! However, I am not sure if it'll do that for MacOS too. If it doesn't, the
+first time you export to PDF, it'll give you an error message. You don't need to
+worry! Just do =SPC b B= and type in =pdf latex output= (you're navigating to
+that buffer) and press enter. You should see something along the lines of
+=<insert package name here>.sty= is missing. You can install the missing package
+using =tlmgr install <insert-package-name-here>=. Look at the 2:10 mark on the
+video for a visual representation of what you'll be doing!
+#+BEGIN_SRC sh
+brew cask install basictex
+# use tlmgr to install the missing latex packages
+tlmgr install <package-name>
+#+END_SRC
+**** Option 2
+Install Mactex. This(in theory) should have all the latex packages that you need(and a
+lot more you don't need). If you something is missing, install it with tlmgr
+with instructions from Option 1.
+#+BEGIN_SRC sh
+brew cask install mactex
+#+END_SRC
+*** Anki
+#+BEGIN_SRC sh
+brew install anki
+#+END_SRC
+** Windows
+Stuff might take a while, but be patient!
+#+BEGIN_SRC sh
+scoop install latex anki
+#+END_SRC
+** Note on spellchecking
+I never showed you how to do spell checking. You can enable the =spell= module
+in your =init.el= (I showed similar things in the video). Then do:
+#+BEGIN_SRC sh
+# if you're on MacOS. You can also install hunspell, but idk the difference between them
+brew install aspell
+# if you're in Windows
+scoop install aspell
+#+END_SRC
+* Evil-tutor Walkthrough
+Walkthrough of evil-mode(vim emulation in Emacs). You don't have to watch this,
+but if you're confused on vim, it might be useful to watch the walkthrough! I
+also show some "advanced" tips and tricks(gained from watching the video series I mentioned
+earlier, and other places).
+#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/lpyxe45Cb4s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+* Closing
+#+HTML: <p> If something doesn't work, let me know! You can find my contact info in my <span><a href="/contact.html">contact</a></span> page </p>

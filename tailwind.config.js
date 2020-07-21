@@ -20,6 +20,7 @@ module.exports = {
           h1: {
             color: defaultTheme.colors.white,
             fontWeight: '800',
+            marginTop: '1rem'
           },
           h2: {
             color: defaultTheme.colors.white,
@@ -50,6 +51,10 @@ module.exports = {
               fontFamily: 'inherit',
               lineHeight: 'inherit',
         },
+          code: {
+            color: defaultTheme.colors.gray[200],
+            fontWeight: '600',
+          }
         },
       },
     },
