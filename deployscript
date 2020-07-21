@@ -3,7 +3,7 @@
 # git worktree add -B gh-pages deploy origin/gh-pages
 # first!
 # Remove everything in the deploy directory except for the CNAME file
-rm -r (string match -r 'CNAME' -v ./deploy/*)
+rm -r (string match -r 'CNAME' -v ~/code/thanawat.xyz/deploy/*)
 # Then copy everything from the site directory where things get built, into the deploy directory
 cp -r _site/* deploy
 cd depoly
