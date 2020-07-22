@@ -9,28 +9,30 @@
         <link rel="stylesheet" href="./css/syntax.css" />
     </head>
     <body class="bg-gray-800 flex flex-col items-center text-white">
-        <header class="w-full flex justify-start mt-2 md:w-3/4 lg:w-2/3">
-            <div class="ml-2 text-xl">
-                <a href="./">Thanawat.xyz</a>
-            </div>
-            <!-- <nav class="space-x-2">
-                 <a class="sm:text-xl lg:text-2xl" href="/about.html">About</a>
-                 <a class="sm:text-xl lg:text-2xl" href="/contact.html">Contact</a>
-                 <a class="sm:text-xl lg:text-2xl" href="/archive.html">Archive</a>
-                 </nav> -->
-        </header>
+            <nav class="fixed z-10 bg-gray-800 px-2 min-w-full flex justify-between pt-2 md:w-3/4 lg:w-2/3">
+                <a class="text-lg lg:text-2xl" href="./">Thanawat.xyz</a>
+                <div>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="./about.html">About</a>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="./contact.html">Contact</a>
+                    <a class="text-lg  lg:text-2xl mx-2" href="./archive.html">Archive</a>
+                </div>
+            </nav>
 
         <main role="main" class="mt-8 mb-4 p-4 max-w-sm lg:max-w-lg xl:max-w-2xl prose prose-sm lg:prose-lg xl:prose-xl text-white">
             <h1 class="text-center">Archives</h1>
             Here you can find all my previous posts:
 <ul>
     
-        <li>
-            <a href="./posts/2020-07-18-emacs.html" class="text-blue-600 underline">Emacs installation guide</a> - July 18, 2020
+        <li class="m-2 text-xl">
+            <a href="./posts/2020-07-18-emacs.html" class="text-blue-600 underline">Emacs installation guide</a>
+            - <span class="text-gray-500">July 18, 2020</span> <br />
+            In this post, I'll be showing you how Emacs can change your life, even if you're not a programmer
         </li>
     
-        <li>
-            <a href="./posts/2020-07-07-my-first-post.html" class="text-blue-600 underline">My First Post</a> - July  7, 2020
+        <li class="m-2 text-xl">
+            <a href="./posts/2020-07-07-my-first-post.html" class="text-blue-600 underline">My First Post</a>
+            - <span class="text-gray-500">July  7, 2020</span> <br />
+            A blog post explaining what content you should be expecting out of this blog
         </li>
     
 </ul>
