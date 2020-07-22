@@ -1,5 +1,6 @@
 ---
 title: My First Post
+description: A blog post explaining what content you should be expecting out of this blog
 ---
 
 * Once again, creating a blog, however, this time an actual blog!

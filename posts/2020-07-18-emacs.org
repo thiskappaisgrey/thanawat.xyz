@@ -1,5 +1,6 @@
 ---
 title: Emacs installation guide
+description: In this post, I'll be showing you how Emacs can change your life, even if you're not a programmer
 ---
 * Preface
 Everything I'll be showing you in my videos will look difficult. Perhaps it'll

@@ -3,8 +3,11 @@
 # git worktree add -B gh-pages deploy origin/gh-pages
 # first!
 # Remove everything in the deploy directory except for the CNAME file
-rm -r (string match -r 'CNAME' -v ~/code/thanawat.xyz/deploy/*)
+rm -r (string match -r 'CNAME' -v ./deploy/*)
+# Build everything in the site, making sure to set NODE_ENV to "production"
+# so purgecss can purge the unnecessary css from tailwind
+NODE_ENV="production" cabal run site rebuild
 # Then copy everything from the site directory where things get built, into the deploy directory
 cp -r _site/* deploy
-cd depoly
+cd deploy
 git add . && git commit -m "Update site"
