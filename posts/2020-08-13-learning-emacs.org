@@ -1,0 +1,8 @@
+#+TITLE: Learning Emacs
+
+* How to learn Emacs
+*How to learn Emacs*
+A guide to learning Emacs for everyone!
+
+* Learning how to learn
+*Learning how to learn*

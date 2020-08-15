@@ -1,0 +1,60 @@
+#+TITLE: Emacs Fundamentals
+* Emacs Fundamentals
+*Emacs Fundamentals*
+* Doom Emacs + Spacemacs
+*Doom/Spacemacs*
+
++ Doom and Spacemacs are prebuilt Emacs configurations that allows anyone to get
+  started with Emacs
++ They allow you to build your config on top of their system
++ Normally your Emacs configuration live in =~/.emacs.d= but with Doom/Spacemacs
+your configuration will live in =~/.doom.d/*.el= or =.spacemacs= respectively.
+* Emacs fundamentals
+*Emacs fundamentals*
+Whether you're using Doom/Spacemacs or decide to configure Emacs on your
+own(which I've actually done, and maybe you should too but you don't have to),
+there are fundamentals to Emacs that help learning it easier.
+* Learning the Emacs Editing style
+*Learning the Emacs Editing style*
+
+Do =M-x help-with-tutorial= in Doom Emacs/Spacemacs. If you launch Emacs doing,
+=emacs --no-init-file=, you can also access the tutorial by just pressing =Enter=.
+* Functions
+*Functions*
+Emacs defines its functionality in functions. Think of functions like the
+options on your mouse when you right-click or the keyboard shortcuts you use in
+Macs or in other programs. Functions define a behavior in Emacs. For Example, I
+could toggle line numbers by calling =display-line-numbers-mode=.
+*** Modes
+- Modes in Emacs enable sets of functionalities in Emacs.
+- For example, right now I am in =Org-mode=
+- There are two modes:
+  1. Major modes - that's your main functionality(like =Org-mode=)
+  2. Minor modes - detailed functionalities(like =evil-mode= or =line-numbers-mode=)
+* Buffers, Frames, Windows and Workspaces
++ Buffers are kind of like tabs!
++ Frames are your Operating System's windows
++ Windows refers to the internal windows in Emacs
+* Emacs is Self-Documenting
++ Every functionality in Emacs is documented!
++ That means you could see what each function does by doing =M-x describe-function=
+  - The Doom keybinding for it is =SPC h f=
++ If you don't know what a keybinding does, you can do =M-x describe-key=
+  - The Doom keybinding for this is =SPC h k=
++ To see/search for keybindings, do =SPC h b b= in Doom or =M-x describe-bindings=
++ Read Doom Emacs Documentation: [[https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org][doom-emacs/index.org at develop · hlissner/doom-emacs]]
+* How to get help
++ Doom Emacs has a [[https://discord.gg/qvGgnVx][Discord]]! Henrik Lissner(@hlissner on github) is super nice,
+  and he's helped me a lot these past couple of days!
++ The [[https://www.reddit.com/r/emacs/][Emacs Reddit]] is also a great resource!
++ There's also me!
+#+HTML: <p> You can find my contact info in my <span><a href="/contact.html">contact</a></span> page </p>
+* Other advice/closing
++ Emacs can be overwhelming but you don't need to completely master it to get productive!
+  + There may be features that are really nice but don't work, don't be like me
+    and spend hours trying to fix it even though I could've finished my work
+    without it and fix it later
+  + 20/80 rule!
++ Hopefully I helped start your Emacs journey! I will be doing more videos at a
+  later date(check in next week), but for now I'm going to take a break from
+  doing videos.

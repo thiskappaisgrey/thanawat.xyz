@@ -1,7 +1,8 @@
 * Inbox
-** TODO Make the index.html page of the site look better! Look for design aspirations
 ** TODO Write more posts!
 - Ideas: setting up Emacs in Windows(with an accompanying video)
 - Habits/Deep work stuff
 
 [[file:~/code/thanawat.xyz/posts/2020-07-07-my-first-post.org][file:~/code/thanawat.xyz/posts/2020-07-07-my-first-post.org]]
+** TODO Make the index.html page of the site look better! Look for design aspirations
+* Finished Tasks

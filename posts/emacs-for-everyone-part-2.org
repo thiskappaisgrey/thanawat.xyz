@@ -1,0 +1,62 @@
+#+TITLE: Emacs for Everyone part 2
+#+date: <2020-08-11 Tue>
+* Title slide
+*The Doom Emacs writing workflow*
+* Slide 1
+*Important: Learn the Emacs/Vim editing styles first!!*
++ Check out my evil-tutor walkthrough video for a visual guide
++ Also, check out my Emacs tutorial walkthrough
+* Slide 2
+*How to Configure Doom Emacs*
+There are 3 files that you edit in order to configure Doom:
+1. =~/.doom.d/init.el=
+   + You enable your modules here.
+2. =~/.doom.d/config.el=
+   + Extra configuration goes here.
+3. =~/.doom.d/packages.el=
+   + Extra packages(not bundled in modules) goes here.
+* Slide 3
+*The modules you need for a writing setup*
+1. =org=
+   + The most important piece you need for a writing setup
+   + This mode/module does so much, and it's amazing!
+   + *Optional* =+roam= Zettlekansten in Emacs
+2. *Optional* =evil=
+   + Vim emulation in Emacs, enabling this also enables other functionality not available in Vanilla Vim
+3. *Optional* =zen=
+   + Distraction Free writing
+4. *Optional* =magit=
+   + For collaboration
+* Slide 4
+*The writing workflow*
+There are 3 main parts in writing:
+1. Inspiration & Planning
+2. Research
+3. Synthesis
+
+=org-mode= provides a set of tools that will assist you in completing these tasks!
+* Slide 5
+*Part 1: Planning*
+When you want to write something, you have to first figure
+out what you're going to write and how you are going to do it.
+You don't have to use =Org-mode= for this, but you can!
+
+Using =org-capture= and keeping a todo list in org allows you to
+easily become more organized!
+* Slide 6
+*Part 2: Research*
+Organize your thoughts in an =Org= file, or even better,
+use =org-roam=!
+* Slide 7
+*Part 3: Synthesis*
+Organize your writing and citations with =org-mode=, and let Emacs and
+Latex automate everything else! No more worrying about if your citations
+are correct or how your paper will look!
+* Slide 8
+*Conclusion*
+You can always learn more about Emacs by:
+1. Watching other videos! - links to useful ones in the description/blog
+2. Or read the built in manual! - hit =SPC h i= then =SPC w o= to enlargen
+   + You can always get to the manual by doing =M-x info=
+Emacs is a extensible tool and there's a lot to learn, and I'm still learning about it
+after all these years of using it!

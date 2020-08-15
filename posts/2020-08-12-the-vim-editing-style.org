@@ -1,0 +1,44 @@
+#+TITLE: The Vim Editing Style
+* Philosophy
+"[T]he beginner who has learned a new language always translates it back into
+his mother tongue, but he assimilates the spirit of the new language and
+expresses himself freely in it only when he moves in it without recalling the
+old and when he forgets his native tongue" - Karl Marx, /The Eighteenth
+Brumaire of Louis Bonaparte/
+* The Vim Philosophy
+Vim is a *Modal* text-editor! That means there are three different input modes
+that all does entirely different things! When you first enter Vim(or Vim's
+emulations), you enter "Normal" mode. This scares people away because when they
+type, Vim does either nothing or weird things.
+* Vim's Modes
+| Mode        | Description                                                               |
+|-------------+---------------------------------------------------------------------------|
+| Normal Mode | This mode allows you to "describe" what you want to do to a piece of text |
+| Insert Mode | This mode allows you to create text!                                      |
+| Visual Mode | This  mode allows you to visually select text!                            |
+* Demystifying Vim's Normal Mode
+Let's connect the foreign concept of *Normal Mode* to a concept we all
+(should) know, *Grammar*! The two main parts of a complete sentence are:
+1. Action words - verbs. Examples:
+   - delete
+   - change
+   - yank(means "copy")
+   - select
+2. Object - nouns. Examples:
+   - word
+   - paragraph
+   - sentence
+3. Modifiers - adverbs
+   - in
+   - around
+** Example
+Hello World!
+
+
+This is an example paragraph. In elementary school, they taught us that a
+paragraph should be at least three sentences.
+* Conclusion
++ spend 30 minutes doing the evil-tutor! Do it couple of times until you understand the concept
++ Try editing all some your files in Emacs. The more you do it, the better you'll get at it!
+* Thanks for Watching!
+*Thanks for Watching!*

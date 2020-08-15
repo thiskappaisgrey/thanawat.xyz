@@ -73,3 +73,12 @@ compressTailwindCompiler :: Compiler (Item String)
 compressTailwindCompiler = do
   fmap (fmap compressCss) $ getResourceString >>= withItemBody
     (unixFilter "npx" ["postcss"])
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "Thanawat's personal blog"
+    , feedDescription = "I'll be posting about the things I'm interested in using this blog post"
+    , feedAuthorName  = "John Doe"
+    , feedAuthorEmail = "test@example.com"
+    , feedRoot        = "http://healthycooking.example.com"
+    }

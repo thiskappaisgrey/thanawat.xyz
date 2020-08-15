@@ -3,47 +3,79 @@ title: Emacs installation guide
 description: In this post, I'll be showing you how Emacs can change your life, even if you're not a programmer
 ---
 * Preface
-Everything I'll be showing you in my videos will look difficult. Perhaps it'll
-look like I'm doing magic! However, whether in fiction or in real life, magic
-follows rules and conventions that its practitioners study, in order to come up
-with formulas that manipulate those rules and conventions to perform the
-"spectacles" that people call "magic". To the uneducated eye, such spectacles
-might seem like an impossible task for them! Some will think to themselves:
-"There's no way I can perform this magic because I am not as capable as those
-magicians! There must be something differentiating me from them, surely!".
-Perhaps, there is. After all, we're not all born into the same circumstances.
-Maybe in fiction, there are only certain types of people who can perform magic.
-Maybe in real life, there are certain qualities and circumstances that allow a
-selective group to perform certain spectacles that the common person can never
-hope to achieve! However, given the right resources and having the right amount
-of interest in a topic, certain people, uneducated in what they think is "magic"
-can learn these rules and conventions. They can struggle through coming up with
-their own formulas to manipulate these rules and conventions. Over time, what
-was once "magic" to them becomes mere "formulas".
-* Introduction to Emacs
-This is just me ranting for 20 minutes and giving you some context into what
-Emacs is, some of the history of it, and why you would want to use it. You can
-watch this video for more information or if you're confused in my Demos, but
-this is entirely optional(sidenote, if you are going to watch this video, do
-note that the audio is a lot quieter than that of the other videos! Sorry!).
-This guide is mainly aimed at non-programmers, however Doom Emacs is a great
-code editor too!
-#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/jJGHPhvx_tQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-** More information:
-- Learn more about [[https://www.gnu.org/software/emacs/][Emacs]].
-- Read the [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org][Getting started with Doom-Emacs]] guide
-- Read the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Emacs manual]] and the [[https://orgmode.org/manual/index.html][org-mode manual]]. Personally never read it.. :D
-  - You can also check out the manual within Emacs by pressing =SPC h i= and clicking on
-    the topics that you want to know more about(or use your vim-keys(you can go
-    to the next page of a manual by doing =C-j= or =C-k=, =C= stands for Control,
-    =M= stands for "meta" or "alt")
-- Before installing Doom Emacs(or after), check out my Overview of Emacs and my Evil-tutor
-  walkthrough on why you should even bother with it!
-* Check out an overview of Emacs Here:
-#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/am87rOOSZW4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
-- Also check out this [[https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj][video series on Doom Emacs and Org-mode]].
-- More on Buffers and Windows(didn't really explain it that well, this is from
-  the video series): [[https://www.youtube.com/watch?v=AL1ypvJ5yAQ&list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&index=5&t=0s][Emacs Doom E04 - Buffers, Windows and Basic Navigation]]
+This is an installation guide to Emacs, you can look at my other posts
+to get an idea of what Emacs is and how you could use it to improve your life!
+* Terminal Basics
+Knowing the terminal is necessary for installing Emacs. After you
+install Emacs, you aren't forced to use the terminal anymore(other than doing
+=doom sync=). Don't be scared of the terminal! It's just a different way of
+interacting with your computer!
+** A tldr of how to use the terminal
+When you open up your terminal(like in my Emacs installation vid in Windows), you'll see something like this:
+#+BEGIN_SRC sh
+~ $
+#+END_SRC
+The =~= stands for your home directory(which in MacOS, is something like
+=/home/username= for Windows, watch my vid). The prompt is telling you that it's
+currently waiting for commands in your home folder(aka directory). Typing
+something on your keyboard will insert text right after the dollar sign! Another
+name for "Terminal" is the "Command prompt", because the terminal is waiting for
+you to type a command(a name of a program). For example typing:
+#+BEGIN_SRC sh
+~ $ ls
+#+END_SRC
+and pressing =Enter=, will show you all the directories(folders) in your home directory.
+
+Terminal commands can also take arguments! This is similar to say, basic
+grammar(I suck at grammar, so this analogy might be bad, sorry, English second
+language). The terminal command is like the action verb(what you want to do),
+and the arguments are like nouns(the object you're doing the action to))! Doing
+something like:
+#+BEGIN_SRC sh
+~ $ cd Documents
+#+END_SRC
+translates to: "Change the current directory to Documents". In other words,
+instead of right clicking a folder in a file explorer, you use commands to do
+stuff to folders/files. The most commands are mnemonic, making remembering them
+not too difficult.
+
+These are the most important commands:
+1. =ls= - Lists all the directories in your current folder
+2. =cd <insert directory name here>= - "Change directory" moves you into another
+   directory, just like clicking on a folder would with Finder or Windows Files
+   explorer
+Other than that, you basically just copy and paste in commands, one by one, like
+I did in the installation video!
+
+** Oher terminal concepts
+In my installation guide, I refered to the =PATH= variable. That's basically
+where terminal(or to be specific, your shell) will look for programs!
+Programs(like =cd= and =ls=) are really just files that takes text based
+arguments(think of them like functions from math)! Doing something like
+#+BEGIN_SRC sh
+~ $ ./.emacs.d/bin/doom sync
+#+END_SRC
+* Package Managers
+Package managers are a program that helps you install other programs(packages).
+The reason why programs are sometimes called "packages" is because certain
+programs depend on other programs. The package managers job is to get the
+necessary parts for running the program, which makes installing programs easy!
+
+There are two package managers that I'll be using, depending if you're on MacOS or Windows:
+1. Brew - MacOS
+2. Scoop - Windows
+
+Even though they are different, the concept is essentially the same! You can
+install any program(that's available in their repositories) using just
+one(sometimes more, but most of the time one) command! For example, I can
+install discord using:
+
+#+BEGIN_SRC sh
+# Adds the bucket that contains discord
+scoop bucket add extras
+# installs discord
+scoop install discord
+#+END_SRC
 * Emacs installation guide
 Take a look below the video for more information! I made a small mistake in my video
 and didn't make you install =llvm=. Also do =scoop install llvm= (it worked
@@ -58,26 +90,51 @@ should probably never do things that you don't understand, especially on your
 computer! Get a rough understanding at what a package manager does, and what
 I'm doing in these steps I gave you.
 ** Installing on MacOS
-I don't have access to a Mac computer, so I can't show you the installation in
-video. I will leave text instructions here for installing on MacOS. You can
-install on MacOS using a similar process to what I showed in the video, but
-Emacs should work a lot better on MacOS because it's a UNIX based system. The
-main difference to the installation process is that rather than using the
-=scoop= package manager, you would use [[https://brew.sh/][Homebrew]]. You can
-install homebrew by opening your Terminal application(search for it using the
-MacOS app search bar) and typing in:
+Here's Doom's official guide to install Emacs: [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#on-macos][Install Emacs]]
+
+Here's a similar video/guide to installing Emacs on MacOs: [[https://www.youtube.com/watch?v=hCNOB5jjtmc][Installing and
+getting started with Spacemacs: Emacs tutorial - YouTube]]. Sidenote: The video I
+referenced shows how to install =Spacemacs=, which is similar to =Doom= but not
+quite. I prefer Doom because it's less bloated(meaning it runs faster) and
+doesn't add too much overhead to configuring. You could try out Spacemacs too,
+to see if you like it! My guides should be useful for whatever
+distribution(configuration really) of Emacs you are using!
+
+Text guide:
+Unfortunately my Mac broke([[https://www.youtube.com/user/rossmanngroup][Louis Rossmann - YouTube]]), so I can't show you the
+installation in video. I will leave text instructions here for installing on
+MacOS. You can install on MacOS using a similar process to what I showed in the
+video, but Emacs should work a lot better on MacOS because it's a UNIX based
+system. The main difference to the installation process is that rather than
+using the =scoop= package manager, you would use [[https://brew.sh/][Homebrew]]. You can install
+homebrew by opening your Terminal application(search for it using the MacOS app
+search bar) and typing these lines in(one at a time) and press =Enter=.
 #+BEGIN_SRC sh
 # This line is a comment. The next line is the command to install the Homebrew Package manager
 # You might have to enter your password. Make sure you're the admistrator on your system.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 # Make sure to press ENTER, and wait for the installation to finish
 # Type this line in, and press ENTER. Wait for installation to finish, and voila!
-brew cask install emacs
+# required dependencies
+brew install git ripgrep
+# optional dependencies
+brew install coreutils fd
+# Installs clang
+xcode-select --install
+
+# Installs Emacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+
+# These commands will install Doom Emacs!
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
 #+END_SRC
+
 The first command will run this [[https://raw.githubusercontent.com/Homebrew/install/master/install.sh][script]]. Look over the script to get a rough idea
-at what the script is doing. On another note, I haven't used brew for a couple
-of months, of the second command fails, try one of the other options in this
-[[https://www.emacswiki.org/emacs/EmacsForMacOS#toc14][article]].
+at what the script is doing. The other commands just installs all the necessary
+software required to install =Doom Emacs=.
 ** Windows Installation
 If you don't want to use scoop, try [[https://chocolatey.org/install][Chocolatey]]. Scoop's just a little easier to
 install(one less step). You can also not use a package manager(if you can't for
@@ -158,19 +215,20 @@ Stuff might take a while, but be patient!
 scoop install latex anki
 #+END_SRC
 ** Note on spellchecking
-I never showed you how to do spell checking. You can enable the =spell= module
-in your =init.el= (I showed similar things in the video). Then do:
+Emacs uses external programs to do spell checking! There are plenty of options,
+but =aspell= is the default. =aspell= has a limited amount of words, so some
+words that are correct but not used much might not be there. =ispell= is the
+successor to =aspell= and works better, but the setup is a little more
+involved(you have to add more lines to your config). Don't worry about this for
+now, I'll show you how to get the best setup in a video later!
+
+You can enable the =spell= module in your =init.el= (I showed similar things in
+the video). Then do:
 #+BEGIN_SRC sh
 # if you're on MacOS. You can also install hunspell, but idk the difference between them
 brew install aspell
 # if you're in Windows
 scoop install aspell
 #+END_SRC
-* Evil-tutor Walkthrough
-Walkthrough of evil-mode(vim emulation in Emacs). You don't have to watch this,
-but if you're confused on vim, it might be useful to watch the walkthrough! I
-also show some "advanced" tips and tricks(gained from watching the video series I mentioned
-earlier, and other places).
-#+HTML: <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/lpyxe45Cb4s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 * Closing
 #+HTML: <p> If something doesn't work, let me know! You can find my contact info in my <span><a href="/contact.html">contact</a></span> page </p>
