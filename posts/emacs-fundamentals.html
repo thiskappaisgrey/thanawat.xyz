@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Thanawat.xyz - emacs-fundamentals</title>
+        <link rel="stylesheet" href="../css/tailwind.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+    </head>
+    <body class="bg-gray-800 flex flex-col items-center text-white">
+            <nav class="fixed z-10 bg-gray-800 px-2 min-w-full flex justify-between pt-2 md:w-3/4 lg:w-2/3">
+                <a class="text-lg lg:text-2xl" href="../">Thanawat.xyz</a>
+                <div>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="../about.html">About</a>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="../contact.html">Contact</a>
+                    <a class="text-lg  lg:text-2xl mx-2" href="../archive.html">Archive</a>
+                </div>
+            </nav>
+
+        <main role="main" class="mt-8 mb-4 p-4 max-w-sm lg:max-w-lg xl:max-w-2xl prose prose-sm lg:prose-lg xl:prose-xl text-white">
+            <h1 class="text-center">emacs-fundamentals</h1>
+            <article class="m-2 p-2">
+    <section class="mb-2 text-center">
+        Posted on August 15, 2020
+        
+    </section>
+    <section class="post">
+        <h1 id="emacs-fundamentals">Emacs Fundamentals</h1>
+<p><strong>Emacs Fundamentals</strong></p>
+<h1 id="doom-emacs-spacemacs">Doom Emacs + Spacemacs</h1>
+<p><strong>Doom/Spacemacs</strong></p>
+<ul>
+<li>Doom and Spacemacs are prebuilt Emacs configurations that allows anyone to get started with Emacs</li>
+<li>They allow you to build your config on top of their system</li>
+<li>Normally your Emacs configuration live in <code>~/.emacs.d</code> but with Doom/Spacemacs</li>
+</ul>
+<p>your configuration will live in <code>~/.doom.d/*.el</code> or <code>.spacemacs</code> respectively.</p>
+<h1 id="emacs-fundamentals-1">Emacs fundamentals</h1>
+<p><strong>Emacs fundamentals</strong> Whether you’re using Doom/Spacemacs or decide to configure Emacs on your own(which I’ve actually done, and maybe you should too but you don’t have to), there are fundamentals to Emacs that help learning it easier.</p>
+<h1 id="learning-the-emacs-editing-style">Learning the Emacs Editing style</h1>
+<p><strong>Learning the Emacs Editing style</strong></p>
+<p>Do <code>M-x help-with-tutorial</code> in Doom Emacs/Spacemacs. If you launch Emacs doing, <code>emacs --no-init-file</code>, you can also access the tutorial by just pressing <code>Enter</code>.</p>
+<h1 id="functions">Functions</h1>
+<p><strong>Functions</strong> Emacs defines its functionality in functions. Think of functions like the options on your mouse when you right-click or the keyboard shortcuts you use in Macs or in other programs. Functions define a behavior in Emacs. For Example, I could toggle line numbers by calling <code>display-line-numbers-mode</code>.</p>
+<h3 id="modes">Modes</h3>
+<ul>
+<li>Modes in Emacs enable sets of functionalities in Emacs.</li>
+<li>For example, right now I am in <code>Org-mode</code></li>
+<li>There are two modes:
+<ol>
+<li>Major modes - that’s your main functionality(like <code>Org-mode</code>)</li>
+<li>Minor modes - detailed functionalities(like <code>evil-mode</code> or <code>line-numbers-mode</code>)</li>
+</ol></li>
+</ul>
+<h1 id="buffers-frames-windows-and-workspaces">Buffers, Frames, Windows and Workspaces</h1>
+<ul>
+<li>Buffers are kind of like tabs!</li>
+<li>Frames are your Operating System’s windows</li>
+<li>Windows refers to the internal windows in Emacs</li>
+</ul>
+<h1 id="emacs-is-self-documenting">Emacs is Self-Documenting</h1>
+<ul>
+<li>Every functionality in Emacs is documented!</li>
+<li>That means you could see what each function does by doing <code>M-x describe-function</code>
+<ul>
+<li>The Doom keybinding for it is <code>SPC h f</code></li>
+</ul></li>
+<li>If you don’t know what a keybinding does, you can do <code>M-x describe-key</code>
+<ul>
+<li>The Doom keybinding for this is <code>SPC h k</code></li>
+</ul></li>
+<li>To see/search for keybindings, do <code>SPC h b b</code> in Doom or <code>M-x describe-bindings</code></li>
+<li>Read Doom Emacs Documentation: <a href="https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org">doom-emacs/index.org at develop · hlissner/doom-emacs</a></li>
+</ul>
+<h1 id="how-to-get-help">How to get help</h1>
+<ul>
+<li>Doom Emacs has a <a href="https://discord.gg/qvGgnVx">Discord</a>! Henrik Lissner(<span class="citation" data-cites="hlissner">@hlissner</span> on github) is super nice, and he’s helped me a lot these past couple of days!</li>
+<li>The <a href="https://www.reddit.com/r/emacs/">Emacs Reddit</a> is also a great resource!</li>
+<li>There’s also me!</li>
+</ul>
+<p> You can find my contact info in my <span><a href="../contact.html">contact</a></span> page </p>
+<h1 id="other-adviceclosing">Other advice/closing</h1>
+<ul>
+<li>Emacs can be overwhelming but you don’t need to completely master it to get productive!
+<ul>
+<li>There may be features that are really nice but don’t work, don’t be like me and spend hours trying to fix it even though I could’ve finished my work without it and fix it later</li>
+<li>20/80 rule!</li>
+</ul></li>
+<li>Hopefully I helped start your Emacs journey! I will be doing more videos at a later date(check in next week), but for now I’m going to take a break from doing videos.</li>
+</ul>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="self-center mb-2">
+            <a href="../contact.html" class="text-blue-600 underline"> Contact me </a>
+        </footer>
+    </body>
+</html>

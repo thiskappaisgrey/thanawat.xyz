@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Thanawat.xyz - The Vim Editing style</title>
+        <link rel="stylesheet" href="../css/tailwind.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+    </head>
+    <body class="bg-gray-800 flex flex-col items-center text-white">
+            <nav class="fixed z-10 bg-gray-800 px-2 min-w-full flex justify-between pt-2 md:w-3/4 lg:w-2/3">
+                <a class="text-lg lg:text-2xl" href="../">Thanawat.xyz</a>
+                <div>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="../about.html">About</a>
+                    <a class="text-lg hidden lg:inline lg:text-2xl mx-2" href="../contact.html">Contact</a>
+                    <a class="text-lg  lg:text-2xl mx-2" href="../archive.html">Archive</a>
+                </div>
+            </nav>
+
+        <main role="main" class="mt-8 mb-4 p-4 max-w-sm lg:max-w-lg xl:max-w-2xl prose prose-sm lg:prose-lg xl:prose-xl text-white">
+            <h1 class="text-center">The Vim Editing style</h1>
+            <article class="m-2 p-2">
+    <section class="mb-2 text-center">
+        Posted on August 11, 2020
+        
+    </section>
+    <section class="post">
+        <h1 id="philosophy">Philosophy</h1>
+<p>“[T]he beginner who has learned a new language always translates it back into his mother tongue, but he assimilates the spirit of the new language and expresses himself freely in it only when he moves in it without recalling the old and when he forgets his native tongue” - Karl Marx, <em>The Eighteenth Brumaire of Louis Bonaparte</em></p>
+<h1 id="the-vim-philosophy">The Vim Philosophy</h1>
+<p>Vim is a <strong>Modal</strong> text-editor! That means there are three different input modes that all does entirely different things! When you first enter Vim(or Vim’s emulations), you enter “Normal” mode. This scares people away because when they type, Vim does either nothing or weird things.</p>
+<h1 id="vims-modes">Vim’s Modes</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Normal Mode</td>
+<td>This mode allows you to “describe” what you want to do to a piece of text</td>
+</tr>
+<tr class="even">
+<td>Insert Mode</td>
+<td>This mode allows you to create text!</td>
+</tr>
+<tr class="odd">
+<td>Visual Mode</td>
+<td>This mode allows you to visually select text!</td>
+</tr>
+</tbody>
+</table>
+<h1 id="demystifying-vims-normal-mode">Demystifying Vim’s Normal Mode</h1>
+<p>Let’s connect the foreign concept of <strong>Normal Mode</strong> to a concept we all (should) know, <strong>Grammar</strong>! The two main parts of a complete sentence are:</p>
+<ol>
+<li>Action words - verbs. Examples:
+<ul>
+<li>delete</li>
+<li>change</li>
+<li>yank(means “copy”)</li>
+<li>select</li>
+</ul></li>
+<li>Modifiers - adverbs
+<ul>
+<li>in</li>
+<li>around</li>
+</ul></li>
+<li>Object - nouns. Examples:
+<ul>
+<li>word</li>
+<li>paragraph</li>
+<li>sentence</li>
+</ul></li>
+</ol>
+<p>The basic scheme of a normal mode action is: Action word -&gt; (sometimes) modifiers -&gt; (optional) Number to repeat -&gt; Text-Object.</p>
+<p>For example, typing “dw” in normal mode literally translates to: “delete a word”. To delete five words, you can do: “d5w”. You can also do someting like “di(” to delete everything in parentheses.</p>
+<p>SPECIAL NOTE: if you’re working with paragraphs and sentences, doing something like “ds” to delete a sentence won’t work! You have to do “dis”(or “das”) to delete everything in/around the sentence, or similarly “dap”(or “dip”) for paragraphs.</p>
+<h1 id="the-other-modes-insert-and-visual">The other modes, Insert and Visual</h1>
+<p>These modes are pretty self-explanatory. Like I said, you probably want to be in Normal mode as much as possible(unless you’re creating new text).</p>
+<h1 id="conclusion">Conclusion</h1>
+<ul>
+<li>spend 30 minutes doing the evil-tutor! Do it couple of times until you understand the concept</li>
+<li>Try editing all some your files in Emacs. The more you do it, the better you’ll get at it!</li>
+</ul>
+<h1 id="thanks-for-watching">Thanks for Watching!</h1>
+<p><strong>Thanks for Watching!</strong></p>
+    </section>
+</article>
+
+        </main>
+
+        <footer class="self-center mb-2">
+            <a href="../contact.html" class="text-blue-600 underline"> Contact me </a>
+        </footer>
+    </body>
+</html>
