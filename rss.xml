@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Thanawat's personal blog</title>
+        <link>https://thanawat.xyz</link>
+        <description><![CDATA[I'll be posting about the things I'm interested in using this blog post]]></description>
+        <atom:link href="https://thanawat.xyz/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Sat, 15 Aug 2020 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>Why I'm quitting Social Media</title>
+    <link>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</link>
+    <description><![CDATA[Explaining why I'm quitting social media]]></description>
+    <pubDate>Sat, 15 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>emacs-fundamentals</title>
+    <link>https://thanawat.xyz/posts/emacs-fundamentals.html</link>
+    <description><![CDATA[Teach a person how to fish, you feed them for life!]]></description>
+    <pubDate>Sat, 15 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/emacs-fundamentals.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>The Vim Editing style</title>
+    <link>https://thanawat.xyz/posts/the-vim-editing-style.html</link>
+    <description><![CDATA[Explaining the Vim editing style!]]></description>
+    <pubDate>Tue, 11 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/the-vim-editing-style.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>emacs-for-everyone-part-3</title>
+    <link>https://thanawat.xyz/posts/emacs-for-everyone-part-3.html</link>
+    <description><![CDATA[Learning to use Emacs, part 2!]]></description>
+    <pubDate>Tue, 11 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/emacs-for-everyone-part-3.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>Emacs installation guide</title>
+    <link>https://thanawat.xyz/posts/emacs-installation.html</link>
+    <description><![CDATA[In this post, I'll be showing you how Emacs can change your life, even if you're not a programmer]]></description>
+    <pubDate>Sat, 18 Jul 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/emacs-installation.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>My First Post</title>
+    <link>https://thanawat.xyz/posts/my-first-post.html</link>
+    <description><![CDATA[A blog post explaining what content you should be expecting out of this blog]]></description>
+    <pubDate>Tue, 07 Jul 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/my-first-post.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+
+    </channel>
+</rss>

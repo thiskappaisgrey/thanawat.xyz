@@ -67,7 +67,7 @@
 <p>What you are going to be doing to install Emacs is first by installing a package manager, which is a piece of software that allows you to install “packages”(or Apps) using the command-line. You can find more information about the package manager you’ll be installing in your Operating System. Most of the time, you should probably never do things that you don’t understand, especially on your computer! Get a rough understanding at what a package manager does, and what I’m doing in these steps I gave you.</p>
 <h2 id="installing-on-macos">Installing on MacOS</h2>
 <p>Here’s Doom’s official guide to install Emacs: <a href="https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#on-macos">Install Emacs</a></p>
-<p>Here’s a similar video/guide to installing Emacs on MacOs: <a href="https://www.youtube.com/watch?v=hCNOB5jjtmc">Installing and getting started with Spacemacs: Emacs tutorial - YouTube</a>. Sidenote: The video I referenced shows how to install <code>Spacemacs</code>, which is similar to <code>Doom</code> but not quite. I prefer Doom because it’s less bloated(meaning it runs faster) and doesn’t add too much overhead to configuring. You could try out Spacemacs too, to see if you like it! My guides should be useful for whatever distribution(configuration really) of Emacs you are using!</p>
+<p>Here’s a similar video/guide to installing Emacs on MacOs: <a href="https://www.youtube.com/watch?v=hCNOB5jjtmc">Installing and getting started with Spacemacs: Emacs tutorial - YouTube</a>. Sidenote: The video I referenced shows how to install <code>Spacemacs</code>, which is similar to <code>Doom</code> but not quite. I prefer Doom because it’s less bloated(meaning it runs faster) and doesn’t add too much overhead to configuring. You could try out Spacemacs too, to see if you like it! My future guides should be useful for whatever distribution(configuration really) of Emacs you are using!</p>
 <p>Text guide: Unfortunately my Mac broke(<a href="https://www.youtube.com/user/rossmanngroup">Louis Rossmann - YouTube</a>), so I can’t show you the installation in video. I will leave text instructions here for installing on MacOS. You can install on MacOS using a similar process to what I showed in the video, but Emacs should work a lot better on MacOS because it’s a UNIX based system. The main difference to the installation process is that rather than using the <code>scoop</code> package manager, you would use <a href="https://brew.sh/">Homebrew</a>. You can install homebrew by opening your Terminal application(search for it using the MacOS app search bar) and typing these lines in(one at a time) and press <code>Enter</code>.</p>
 <div class="sourceCode" id="cb6" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># This line is a comment. The next line is the command to install the Homebrew Package manager</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co"># You might have to enter your password. Make sure you're the admistrator on your system.</span></span>
@@ -113,12 +113,18 @@
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="co"># adds the &quot;extras&quot; bucket</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="ex">scoop</span> bucket add extras</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="ex">scoop</span> install emacs ripgrep fd llvm</span></code></pre></div></li>
-<li><p>Change your environment variables! (Check 25:50 in the video.)</p></li>
 <li><p>Install Doom-emacs</p>
 <div class="sourceCode" id="cb9" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">git</span> clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="co"># This might take a while.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">~/.emacs.d/bin/doom</span> install</span></code></pre></div></li>
 </ol>
+<h3 id="edit-envrionment-variables">Edit envrionment variables</h3>
+<p>For a visual guide, go to my Windows Emacs installation video at: 40:00 In order to make Doom work, you need to edit the Windows’ environment variables, follow these instructions here:</p>
+<ol>
+<li>Go to Control panel -&gt; User Accounts -&gt; Change my environment variables.</li>
+<li>New, type HOME and set your C: and OK.</li>
+</ol>
+<p>You can add C:\.emacs.d; to your PATH, but I didn’t show it in the video.</p>
 <h1 id="installing-extra-programslatex-anki">Installing Extra Programs(latex + Anki)</h1>
 <div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/aV0BkzGsaTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <h2 id="macos">MacOS</h2>
@@ -137,7 +143,7 @@
 <h3 id="anki">Anki</h3>
 <div class="sourceCode" id="cb12" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">brew</span> install anki</span></code></pre></div>
 <h2 id="windows">Windows</h2>
-<p>Stuff might take a while, but be patient!</p>
+<p>Watch me install these programs in my installation video+rant! Stuff might take a while, but be patient!</p>
 <div class="sourceCode" id="cb13" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">scoop</span> install latex anki</span></code></pre></div>
 <h2 id="note-on-spellchecking">Note on spellchecking</h2>
 <p>Emacs uses external programs to do spell checking! There are plenty of options, but <code>aspell</code> is the default. <code>aspell</code> has a limited amount of words, so some words that are correct but not used much might not be there. <code>ispell</code> is the successor to <code>aspell</code> and works better, but the setup is a little more involved(you have to add more lines to your config). Don’t worry about this for now, I’ll show you how to get the best setup in a video later!</p>
