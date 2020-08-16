@@ -7,45 +7,37 @@
         <description><![CDATA[I'll be posting about the things I'm interested in using this blog post]]></description>
         <atom:link href="https://thanawat.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 15 Aug 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 16 Aug 2020 00:00:00 UT</lastBuildDate>
         <item>
-    <title>Why I'm quitting Social Media</title>
-    <link>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</link>
-    <description><![CDATA[Explaining why I'm quitting social media]]></description>
-    <pubDate>Sat, 15 Aug 2020 00:00:00 UT</pubDate>
-    <guid>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</guid>
-    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
-</item>
-<item>
-    <title>emacs-fundamentals</title>
-    <link>https://thanawat.xyz/posts/emacs-fundamentals.html</link>
-    <description><![CDATA[Teach a person how to fish, you feed them for life!]]></description>
-    <pubDate>Sat, 15 Aug 2020 00:00:00 UT</pubDate>
-    <guid>https://thanawat.xyz/posts/emacs-fundamentals.html</guid>
-    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
-</item>
-<item>
-    <title>The Vim Editing style</title>
+    <title>Video: The Vim Editing style</title>
     <link>https://thanawat.xyz/posts/the-vim-editing-style.html</link>
     <description><![CDATA[Explaining the Vim editing style!]]></description>
-    <pubDate>Tue, 11 Aug 2020 00:00:00 UT</pubDate>
+    <pubDate>Sun, 16 Aug 2020 00:00:00 UT</pubDate>
     <guid>https://thanawat.xyz/posts/the-vim-editing-style.html</guid>
     <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
 </item>
 <item>
-    <title>emacs-for-everyone-part-3</title>
-    <link>https://thanawat.xyz/posts/emacs-for-everyone-part-3.html</link>
-    <description><![CDATA[Learning to use Emacs, part 2!]]></description>
-    <pubDate>Tue, 11 Aug 2020 00:00:00 UT</pubDate>
-    <guid>https://thanawat.xyz/posts/emacs-for-everyone-part-3.html</guid>
+    <title>Video: Emacs fundamentals</title>
+    <link>https://thanawat.xyz/posts/emacs-fundamentals.html</link>
+    <description><![CDATA[Teach a person how to fish, you feed them for life!]]></description>
+    <pubDate>Fri, 14 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/emacs-fundamentals.html</guid>
     <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
 </item>
 <item>
-    <title>Emacs installation guide</title>
+    <title>Video: Emacs installation guide</title>
     <link>https://thanawat.xyz/posts/emacs-installation.html</link>
     <description><![CDATA[In this post, I'll be showing you how Emacs can change your life, even if you're not a programmer]]></description>
-    <pubDate>Sat, 18 Jul 2020 00:00:00 UT</pubDate>
+    <pubDate>Wed, 12 Aug 2020 00:00:00 UT</pubDate>
     <guid>https://thanawat.xyz/posts/emacs-installation.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>Video: Emacs For Everyone!</title>
+    <link>https://thanawat.xyz/posts/emacs-for-everyone.html</link>
+    <description><![CDATA[The start of a series to help people learn Emacs!]]></description>
+    <pubDate>Tue, 11 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/emacs-for-everyone.html</guid>
     <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
 </item>
 <item>

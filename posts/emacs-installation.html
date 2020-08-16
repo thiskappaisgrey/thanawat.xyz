@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> Thanawat.xyz - Emacs installation guide</title>
+        <title> Thanawat.xyz - Video: Emacs installation guide</title>
         <link rel="stylesheet" href="../css/tailwind.css" />
         <link rel="stylesheet" href="../css/syntax.css" />
     </head>
@@ -19,14 +19,22 @@
             </nav>
 
         <main role="main" class="mt-8 mb-4 p-4 max-w-sm lg:max-w-lg xl:max-w-2xl prose prose-sm lg:prose-lg xl:prose-xl text-white">
-            <h1 class="text-center">Emacs installation guide</h1>
+            <h1 class="text-center">Video: Emacs installation guide</h1>
             <article class="m-2 p-2">
     <section class="mb-2 text-center">
-        Posted on July 18, 2020
+        Posted on August 12, 2020
         
     </section>
     <section class="post">
-        <h1 id="preface">Preface</h1>
+        <h1 id="video">Video</h1>
+<p>Here’s the video I made to give a short-overview of the Emacs installation process:</p>
+<div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe id="lbry-iframe" class="resp-iframe" src="https://lbry.tv/$/embed/Emacs-for-Everyone-Part-2--Emacs-Installation-Overview/6ff2f0dc36de8c9a0737fe1e071b21a0f10b9d1c" allowfullscreen></iframe></div>
+<p>Again, here’s the <a href="https://open.lbry.com/@thanawat:0/Emacs-for-Everyone-Part-2--Emacs-Installation-Overview:6?r=B32AyFM2MUiixsVw3vxc2rPGgokfm2nd">link</a> to the video if the embed doesn’t work.</p>
+<p>If you’re on MacOS, I don’t have access to a MacOS system, so I couldn’t make a video if I wanted. Thankfully there are other videos out there for a visual guide! Here’s a similar video/guide to installing Emacs on MacOs: <a href="https://www.youtube.com/watch?v=hCNOB5jjtmc">Installing and getting started with Spacemacs: Emacs tutorial - YouTube</a>. Sidenote: The video I referenced shows how to install <code>Spacemacs</code>, which is similar to <code>Doom</code> but not quite. I prefer Doom because it’s less bloated(meaning it runs faster) and doesn’t add too much overhead to configuring. You could try out Spacemacs too, to see if you like it! My future guides should be useful for whatever distribution(configuration really) of Emacs you are using!</p>
+<p>On Windows, I used a Windows Virtual machine to show you the whole process. I also ranted a lot in this video! As a special note, at the end I was singing “Waiting Around to Die” by Townes Van Zandt, that’s a song that’s not in the Public Domain, so I muted it out just to be safe. Here’s the video:</p>
+<div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe id="lbry-iframe" class="resp-iframe" src="https://lbry.tv/$/embed/Emacs-Installation+rant/6cb23efe50a7dc229fad01a47f89b3ccc84cbb41" allowfullscreen></iframe></div>
+<p>Here’s the direct <a href="https://open.lbry.com/@thanawat:0/Emacs-Installation+rant:6?r=B32AyFM2MUiixsVw3vxc2rPGgokfm2nd">link</a> to the video!</p>
+<h1 id="preface">Preface</h1>
 <p>This is an installation guide to Emacs, you can look at my other posts to get an idea of what Emacs is and how you could use it to improve your life!</p>
 <h1 id="terminal-basics">Terminal Basics</h1>
 <p>Knowing the terminal is necessary for installing Emacs. After you install Emacs, you aren’t forced to use the terminal anymore(other than doing <code>doom sync</code>). Don’t be scared of the terminal! It’s just a different way of interacting with your computer!</p>
@@ -46,8 +54,9 @@
 </ol>
 <p>Other than that, you basically just copy and paste in commands, one by one, like I did in the installation video!</p>
 <h2 id="oher-terminal-concepts">Oher terminal concepts</h2>
-<p>In my installation guide, I refered to the <code>PATH</code> variable. That’s basically where terminal(or to be specific, your shell) will look for programs! Programs(like <code>cd</code> and <code>ls</code>) are really just files that takes text based arguments(think of them like functions from math)! Doing something like</p>
+<p>In my installation guide, I refered to the <code>PATH</code> variable. That’s basically where terminal(or to be specific, your shell) will look for programs! Programs(like <code>cd</code> and <code>ls</code>) are really just special program files that takes text based arguments(think of them like ordering food at a restaurant! your terminal programs are like menu items with special instructions like “no gluten”)! Doing something like</p>
 <div class="sourceCode" id="cb4" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">~</span> $ <span class="ex">./.emacs.d/bin/doom</span> sync</span></code></pre></div>
+<p>means that I am giving the terminal prompt direct path to the program(which is basically just a file). The “.” means “start looking from the current folder(directory). The”/" separates the names of the directories(folder), and finally “doom” is the name of the shell-program. Giving it the argument “sync” means that I am telling the “doom” program to sync my files. Let me know(find contact info in my <a href="https://thanawat.xyz/contact.html">contact</a> page).</p>
 <h1 id="package-managers">Package Managers</h1>
 <p>Package managers are a program that helps you install other programs(packages). The reason why programs are sometimes called “packages” is because certain programs depend on other programs. The package managers job is to get the necessary parts for running the program, which makes installing programs easy!</p>
 <p>There are two package managers that I’ll be using, depending if you’re on MacOS or Windows:</p>
@@ -61,13 +70,10 @@
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co"># installs discord</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">scoop</span> install discord</span></code></pre></div>
 <h1 id="emacs-installation-guide">Emacs installation guide</h1>
-<p>Take a look below the video for more information! I made a small mistake in my video and didn’t make you install <code>llvm</code>. Also do <code>scoop install llvm</code> (it worked without llvm, but install it just in case..).</p>
-<div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/f8TGLVveDaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <h2 id="a-summary-of-the-installation-process.">A summary of the installation process.</h2>
 <p>What you are going to be doing to install Emacs is first by installing a package manager, which is a piece of software that allows you to install “packages”(or Apps) using the command-line. You can find more information about the package manager you’ll be installing in your Operating System. Most of the time, you should probably never do things that you don’t understand, especially on your computer! Get a rough understanding at what a package manager does, and what I’m doing in these steps I gave you.</p>
 <h2 id="installing-on-macos">Installing on MacOS</h2>
 <p>Here’s Doom’s official guide to install Emacs: <a href="https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#on-macos">Install Emacs</a></p>
-<p>Here’s a similar video/guide to installing Emacs on MacOs: <a href="https://www.youtube.com/watch?v=hCNOB5jjtmc">Installing and getting started with Spacemacs: Emacs tutorial - YouTube</a>. Sidenote: The video I referenced shows how to install <code>Spacemacs</code>, which is similar to <code>Doom</code> but not quite. I prefer Doom because it’s less bloated(meaning it runs faster) and doesn’t add too much overhead to configuring. You could try out Spacemacs too, to see if you like it! My future guides should be useful for whatever distribution(configuration really) of Emacs you are using!</p>
 <p>Text guide: Unfortunately my Mac broke(<a href="https://www.youtube.com/user/rossmanngroup">Louis Rossmann - YouTube</a>), so I can’t show you the installation in video. I will leave text instructions here for installing on MacOS. You can install on MacOS using a similar process to what I showed in the video, but Emacs should work a lot better on MacOS because it’s a UNIX based system. The main difference to the installation process is that rather than using the <code>scoop</code> package manager, you would use <a href="https://brew.sh/">Homebrew</a>. You can install homebrew by opening your Terminal application(search for it using the MacOS app search bar) and typing these lines in(one at a time) and press <code>Enter</code>.</p>
 <div class="sourceCode" id="cb6" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># This line is a comment. The next line is the command to install the Homebrew Package manager</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co"># You might have to enter your password. Make sure you're the admistrator on your system.</span></span>
@@ -126,7 +132,6 @@
 </ol>
 <p>You can add C:\.emacs.d; to your PATH, but I didn’t show it in the video.</p>
 <h1 id="installing-extra-programslatex-anki">Installing Extra Programs(latex + Anki)</h1>
-<div class="resp-container mb-4 max-w-sm lg:max-w-none"><iframe class="resp-iframe" src="https://www.youtube.com/embed/aV0BkzGsaTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <h2 id="macos">MacOS</h2>
 <h3 id="latex">Latex</h3>
 <p>There are two options that you can do to install Latex on MacOS. The first one is a little more involved, but saves a lot of disk space. The second one will take up 3GB of disk space, and installs a lot of stuff(like a latex editor, you don’t need this because you’re already using Emacs!) that you don’t need! I will give you these two options and let you choose.</p>
