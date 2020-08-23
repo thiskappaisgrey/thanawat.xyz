@@ -7,8 +7,32 @@
         <description><![CDATA[I'll be posting about the things I'm interested in using this blog post]]></description>
         <atom:link href="https://thanawat.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 16 Aug 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Aug 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Getting one year older..</title>
+    <link>https://thanawat.xyz/posts/birthday.html</link>
+    <description><![CDATA[Apparently, at least in my culture, you celebrate and not mourn having one year less to live..]]></description>
+    <pubDate>Sat, 22 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/birthday.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>Video: What is Free Software?</title>
+    <link>https://thanawat.xyz/posts/what-is-free-software.html</link>
+    <description><![CDATA[What does it mean for software to be "free"? Why should you care that it's "Free"?]]></description>
+    <pubDate>Thu, 20 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/what-is-free-software.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
+    <title>Video: Why I'm quitting Social Media</title>
+    <link>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</link>
+    <description><![CDATA[Explaining why I'm quitting social media]]></description>
+    <pubDate>Tue, 18 Aug 2020 00:00:00 UT</pubDate>
+    <guid>https://thanawat.xyz/posts/why-I%27m-quitting-social-media.html</guid>
+    <dc:creator>Thanawat Techaumnuaiwit</dc:creator>
+</item>
+<item>
     <title>Video: The Vim Editing style</title>
     <link>https://thanawat.xyz/posts/the-vim-editing-style.html</link>
     <description><![CDATA[Explaining the Vim editing style!]]></description>
