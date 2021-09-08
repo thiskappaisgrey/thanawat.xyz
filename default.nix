@@ -21,11 +21,11 @@ let
     haskellNix.nixpkgsArgs;
 in pkgs.haskell-nix.project {
   # 'cleanGit' cleans a source directory based on the files known by git
-  # The builder is based on git. nix-build won't work for files that are untracked!! Build with cabal instead
   src = pkgs.haskell-nix.haskellLib.cleanGit {
     name = "thanawat.xyz";
     src = ./.;
   };
   # Specify the GHC version to use.
   compiler-nix-name = "ghc8105"; # Not required for `stack.yaml` based projects.
+  index-state = "2021-08-30T00:00:00Z";
 }

@@ -1,0 +1,45 @@
+#+TITLE: Todo
+* Inbox
+** TODO Creating a live reloading dev server for my static site
+- https://ihp.digitallyinduced.com/blog/2020-08-10-ihp-live-reloading.html
+- https://github.com/tapio/live-server#readme - a js implementation
+- https://github.com/sigrlami/slick-live/blob/master/src/Slick/Serve.hs - Another implementationish
+- [X] Watch for changes in the haskell files inside of =app=
+- [X] Reload =ghci= and call the =main= function to rebuild the shake application
+- [ ] Maybe have a kbd to manually reload (in case something goes wrong)
+- [X] Send a message on the websockets in order to have it notify all the clients that watch it?
+- [ ] Reload the dom using the library mentioned in the website
+- [ ] Fix the bugs where if ghci doesn't compile properly, it should still recompile the next time a file changed (probably a bug with the mvar chain)
+- [ ] The error messages in gchi is really bad right now and I might want to use fix it
+- [ ] Also, sometimes, ghci will only load one module(the module that failed) and won't load main. This is problematic
+
+[[file:~/code/new-website/reload/Main.hs::run 3000 (staticApp $ (defaultWebAppSettings "./build") { ssRedirectToIndex = True })]]
+** TODO Create page transitions using javascript
+
+[[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
+** TODO Create stylesheets for components using clay
+
+[[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
+** TODO Not related to the project, but maybe I can write a haskell/elisp program to take the org data(of some format) and convert it into a pdf export ready file
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Create a Resume timeline thing, generated from an org file(maybe from the same file as the resume I wrote? but I might need to modify it a bit..?)
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Create a new page for every project I've worked on(a portfolio)
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Create a new rule to convert the org file into my resume/projects page
+
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Create a new rule to convert the org file into a resume/projects page
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Get the metadata from the org document in order to populate the index page
+
+[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+* Learnings
+** How this library works
+- In order to build posts, the slick static site builder uses the /shake/ build tool(using the [[https://hackage.haskell.org/package/shake-0.19.5/docs/Development-Shake-Forward.html][Shake.Forward]] ) module in order to build the website
+- To create a /rule/ you need to generate an Action Monad. The Action monad allows you to write /rules/ that can take a /FilePath/, do something with the file(like get metadata and such) and then output some static files
