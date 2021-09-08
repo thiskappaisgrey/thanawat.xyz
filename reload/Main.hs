@@ -4,10 +4,7 @@ module Main where
 
 import Control.Concurrent
 import Control.Monad (forever, forM_, unless)
-import Control.Monad.IO.Class (liftIO)
 import qualified Data.Text as T
-import qualified Data.Text.Lazy as TL
-import Network.HTTP.Types
 import Network.Wai
 import Network.Wai.Application.Static
 import Network.Wai.Handler.Warp
@@ -29,7 +26,9 @@ reloadBrowserOnFileChange doneCompile connsMvar = forever $ do
   putStrLn "Refreshing all the clients"
   conns <- readMVar connsMvar
   forM_ conns (\conn -> WS.sendTextData conn ("refresh the browser" :: T.Text))
-  modifyMVar_ connsMvar (\_ -> return []) -- Bug with the live reload server!! the clients never get cleared after reloading
+  -- TODO this part is super buggy and I'm not sure why.. The connections don't actually get reset after browser refresh for some reason
+  -- This refresh is actually run, but somehow multiple connections are made, even though it's just one browser. The connections didn't close properly maybe?
+  modifyMVar_ connsMvar (\_ -> return [])
 
 static :: Application
 static = staticApp $ defaultFileServerSettings "./build"
@@ -42,9 +41,9 @@ app doneCompile connsMVar = websocketsOr defaultConnectionOptions wsApp static
       conn <- acceptRequest pending_conn
       -- put the handler in a pinging thread
       WS.withPingThread conn 30 (return ()) $ do -- Maybe I need to move the forever here?? not sure what's going on..
-        emp <- isEmptyMVar connsMVar
-        putStrLn $ mconcat ["connections is empty: ", show emp]
+
         putStrLn "Accepting connection from browser"
+
         conns <- modifyMVar connsMVar (\s -> do
                                           let s' = conn:s -- only do the computation once
                                           return (s',s')) -- add the connection to the connections MVar
@@ -80,7 +79,7 @@ reloadGhciFileChange fileChanged doneCompile connsMVar ghci = do
       forM_ execMsg putStrLn
       conns <- readMVar connsMVar
       let emp = null conns
-      putStrLn ("There are connections: " <> show emp)
+      -- putStrLn ("There are connections: " <> show emp)
       unless emp $ putMVar doneCompile ()
 ghciStart :: IO Ghci
 ghciStart = do
