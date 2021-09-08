@@ -50,18 +50,38 @@ app doneCompile connsMVar = websocketsOr defaultConnectionOptions wsApp static
                                           return (s',s')) -- add the connection to the connections MVar
         putStrLn $ mconcat ["There are now: ", show $ length conns, " clients connected" ]
         reloadBrowserOnFileChange doneCompile connsMVar
+checkMsgError :: [Load] -> Either (String, [String]) ()
+checkMsgError = foldl f  (Right ())
+  where
+    f ::  Either (String, [String]) () -> Load -> Either (String, [String]) ()
+    f (Left m) _ = Left m
+    f (Right _) msg = case msg of
+                        Message { loadSeverity = sev, loadFile = file, loadFilePos = p, loadFilePosEnd = pe, loadMessage = s} ->
+                          case sev of
+                            Error ->
+                              Left (mconcat ["There was an error in ", file,  " at: " , show p , " to " , show pe], s)
+                            Warning ->
+                              Right ()
+                        _ ->
+                          Right ()
+
+
 reloadGhciFileChange :: MVar Event -> MVar () -> Connections -> Ghci -> IO ()
 reloadGhciFileChange fileChanged doneCompile connsMVar ghci = do
   e <- takeMVar fileChanged
   putStrLn ("Restarting ghci because: " <> show e)
-  msg <- reload ghci -- TODO Pattern match on the msg
-  print msg -- TODO problematic part
-  execMsg <- exec ghci "Main.main"
-  forM_ execMsg putStrLn
-  conns <- readMVar connsMVar
-  let emp = null conns
-  putStrLn ("There are connections: " <> show emp)
-  unless emp $ putMVar doneCompile ()
+  msg <- reload ghci
+  let msgError = checkMsgError msg
+  case msgError of
+    Left m ->
+      putStrLn $ fst m
+    Right _ -> do
+      execMsg <- exec ghci "Main.main"
+      forM_ execMsg putStrLn
+      conns <- readMVar connsMVar
+      let emp = null conns
+      putStrLn ("There are connections: " <> show emp)
+      unless emp $ putMVar doneCompile ()
 ghciStart :: IO Ghci
 ghciStart = do
   (ghci, load) <- startGhci "cabal new-repl build-site" (Just ".") $ const putStrLn

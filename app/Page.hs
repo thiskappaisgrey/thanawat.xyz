@@ -36,7 +36,7 @@ postList postList = let
     span_ [class_ "date"] $ toHtml $ date post
   in
   do
-    h1_ "Hi, My name is Thanawat! Come look at my posts!"
+    h1_ "Hi, My name is Thanawat! Come look at my posts, they are great!"
     ul_ $ mapM_ postItem postList
 
 index :: [Post] -> String
