@@ -104,7 +104,7 @@ main = do
     -- start a watching job (in the background)
     putStrLn "Watching ./build"
 
-    watchTree
+    _ <- watchTree
       mgr -- manager
       "./app" -- directory to watch
       (const True) -- predicate

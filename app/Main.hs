@@ -28,13 +28,6 @@ import System.Directory (removeDirectoryRecursive) -- in case I want to remove d
 outputFolder :: FilePath
 outputFolder = "build/"
 
--- | given a list of posts this will build a table of contents
--- buildIndex :: [Post] -> Action ()
--- buildIndex posts' = do
---   indexT <- compileTemplate' "site/templates/index.html"
---   let indexInfo = IndexInfo {posts = posts'}
---       indexHTML = T.unpack $ substitute indexT (toJSON indexInfo)
---   writeFile' (outputFolder </> "index.html") indexHTML
 
 -- | Find and build all posts
 buildPosts :: Action [Post]

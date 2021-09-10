@@ -22,3 +22,4 @@ data Post =
          -- , image   :: Maybe String
          }
     deriving (Generic, Eq, Ord, Show, FromJSON, ToJSON, Binary)
+-- | Data for an About Page
