@@ -23,3 +23,9 @@ data Post =
          }
     deriving (Generic, Eq, Ord, Show, FromJSON, ToJSON, Binary)
 -- | Data for an About Page
+
+data About = About {
+  aboutDescription :: T.Text
+  , aboutLanguages :: [T.Text]
+  , otherSections :: [T.Text]
+                   }

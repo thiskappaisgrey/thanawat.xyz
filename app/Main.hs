@@ -10,6 +10,7 @@ import qualified Data.Map as M
 import Data.Org as O
 import qualified Data.Org.Lucid as LO
 import qualified Data.Text as T
+import qualified Data.Text.IO as T.IO
 import qualified Data.Text.Lazy as TZ
 import Data.Validation as V
 import Development.Shake
@@ -28,13 +29,7 @@ import System.Directory (removeDirectoryRecursive) -- in case I want to remove d
 outputFolder :: FilePath
 outputFolder = "build/"
 
-
--- | Find and build all posts
-buildPosts :: Action [Post]
-buildPosts = do
-  pPaths <- getDirectoryFiles "." ["site/posts//*.org"]
-  forP pPaths buildPost
-
+--Utility Functions------------------------------------------------------------
 -- TODO I need to extract the metadata for the index
 maybeToEither :: a -> Maybe b -> Either a b
 maybeToEither msg Nothing = Left msg
@@ -75,6 +70,13 @@ convertOrg postUrl orgText = do
           let post = P.post $ LO.body LO.defaultStyle file
           writeFile' (outputFolder </> T.unpack postUrl)  post
           return m
+-- Build Rules -----------------------------------------------------------
+-- | Find and build all posts
+buildPosts :: Action [Post]
+buildPosts = do
+  pPaths <- getDirectoryFiles "." ["site/posts//*.org"]
+  forP pPaths buildPost
+
 
 -- | Load a post, process metadata, write it to output, then return the post object
 -- Detects changes to either post content or template
@@ -103,15 +105,30 @@ buildCss :: Action ()
 buildCss = do
   let cssText = C.renderWith C.compact [] P.styleSheet
   writeFile' (outputFolder </> "styleSheet.css") $ TZ.unpack cssText
+-- Requires a "Partial" type contraint but I don't know which Partial it is..
+readFileText :: FilePath -> Action T.Text
+readFileText x = need [x] >> liftIO (T.IO.readFile x)
+
+
+-- TODO get "templates" as org files, filer out the necessary info then do some stuff with it?
+buildAbout :: Action ()
+buildAbout = do
+  aboutContent <- readFileText "./site/templates/about.org"
+  let orgData = O.org aboutContent
+  liftIO $ print orgData
+
+
 
 -- | Specific build rules for the Shake system
 --   defines workflow to build the website
 buildRules :: Action ()
 buildRules = do
   posts <- buildPosts
+  buildAbout
   buildIndex posts
   buildCss
   copyStaticFiles
+
 
 
 -- | Kick it all off
