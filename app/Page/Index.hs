@@ -10,7 +10,8 @@ import Colors
 import Page.Components
 
 callButtons :: [(T.Text, T.Text)] -> Html ()
-callButtons = mapM_ (\(buttonText, color) -> button_ [class_ $ "button-" <> color] $ toHtml buttonText)
+callButtons = do
+  div_ [class_ "spacing"] . mapM_ (\(buttonText, color) -> button_ [class_ $ "button-" <> color] $ toHtml buttonText)
   -- postList posts
 heroSheet :: Css
 heroSheet = ".hero" ? do

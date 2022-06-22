@@ -1,23 +1,14 @@
 #+TITLE: Todo
-* Inbox
-** TODO Creating a live reloading dev server for my static site
-- https://ihp.digitallyinduced.com/blog/2020-08-10-ihp-live-reloading.html
-- https://github.com/tapio/live-server#readme - a js implementation
-- https://github.com/sigrlami/slick-live/blob/master/src/Slick/Serve.hs - Another implementationish
-- [X] Watch for changes in the haskell files inside of =app=
-- [X] Reload =ghci= and call the =main= function to rebuild the shake application
-- [ ] Maybe have a kbd to manually reload (in case something goes wrong)
-- [X] Send a message on the websockets in order to have it notify all the clients that watch it?
-- [ ] Reload the dom using the library mentioned in the website
-- [ ] Fix the bugs where if ghci doesn't compile properly, it should still recompile the next time a file changed (probably a bug with the mvar chain)
-- [ ] The error messages in gchi is really bad right now and I might want to use fix it
-- [ ] Also, sometimes, ghci will only load one module(the module that failed) and won't load main. This is problematic
+* Inbox (high prio to low)
+** TODO About Page
+- [ ] Model the data for the about page
+- [ ] Figure out how convert the Org data into the model
+- [ ] Then design the page given the data. Essentially, I need to copy
+  paste some code from org-mode lucid b/c the functions are not
+  exposed (specifically, paragraph to html and such. This seems like a
+  decent solution for now, but maybe make an issue later?)
 
-[[file:~/code/new-website/reload/Main.hs::run 3000 (staticApp $ (defaultWebAppSettings "./build") { ssRedirectToIndex = True })]]
 ** TODO Create page transitions using javascript
-
-[[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
-** TODO Create stylesheets for components using clay
 
 [[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
 ** TODO Not related to the project, but maybe I can write a haskell/elisp program to take the org data(of some format) and convert it into a pdf export ready file
@@ -33,12 +24,30 @@
 
 
 [[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
-** TODO Create a new rule to convert the org file into a resume/projects page
-
-[[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
 ** TODO Get the metadata from the org document in order to populate the index page
 
 [[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+* Done tasks
+** DONE Creating a live reloading dev server for my static site
+CLOSED: [2022-06-17 Fri 19:26]
+- https://ihp.digitallyinduced.com/blog/2020-08-10-ihp-live-reloading.html
+- https://github.com/tapio/live-server#readme - a js implementation
+- https://github.com/sigrlami/slick-live/blob/master/src/Slick/Serve.hs - Another implementationish
+- [X] Watch for changes in the haskell files inside of =app=
+- [X] Reload =ghci= and call the =main= function to rebuild the shake application
+- [ ] Maybe have a kbd to manually reload (in case something goes wrong)
+- [X] Send a message on the websockets in order to have it notify all the clients that watch it?
+- [ ] Reload the dom using the library mentioned in the website
+- [ ] Fix the bugs where if ghci doesn't compile properly, it should still recompile the next time a file changed (probably a bug with the mvar chain)
+- [ ] The error messages in gchi is really bad right now and I might want to use fix it
+- [ ] Also, sometimes, ghci will only load one module(the module that failed) and won't load main. This is problematic
+
+[[file:~/code/new-website/reload/Main.hs::run 3000 (staticApp $ (defaultWebAppSettings "./build") { ssRedirectToIndex = True })]]
+** DONE Create stylesheets for components using clay
+CLOSED: [2022-06-17 Fri 19:27]
+
+
+[[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
 * Learnings
 ** How this library works
 - In order to build posts, the slick static site builder uses the /shake/ build tool(using the [[https://hackage.haskell.org/package/shake-0.19.5/docs/Development-Shake-Forward.html][Shake.Forward]] ) module in order to build the website

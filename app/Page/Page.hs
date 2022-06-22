@@ -10,7 +10,6 @@ import Colors
 import Page.Index
 import Page.Components
 
-
 styleSheet :: Css
 styleSheet = do
   -- get's rid of default styles

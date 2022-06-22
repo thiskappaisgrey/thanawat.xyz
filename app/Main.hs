@@ -113,7 +113,9 @@ readFileText x = need [x] >> liftIO (T.IO.readFile x)
 -- TODO get "templates" as org files, filer out the necessary info then do some stuff with it?
 buildAbout :: Action ()
 buildAbout = do
-  aboutContent <- readFileText "./site/templates/about.org"
+  -- the wording "template" doesn't exactly make sense here? so use "page" instead?
+  aboutContent <- readFileText "./site/page/about.org"
+  -- Use this to test in ghci: Data.Text.IO.readFile "./site/page/about.org" >>= print . Data.Org.org
   let orgData = O.org aboutContent
   liftIO $ print orgData
 
@@ -124,7 +126,7 @@ buildAbout = do
 buildRules :: Action ()
 buildRules = do
   posts <- buildPosts
-  buildAbout
+  -- buildAbout
   buildIndex posts
   buildCss
   copyStaticFiles
