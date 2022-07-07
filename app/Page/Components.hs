@@ -30,6 +30,7 @@ navSheet = nav ? do
   display flex
   justifyContent spaceBetween
   marginBottom (C.rem 1)
+  
   C.div ? do
     display flex
     justifyContent spaceAround
@@ -46,7 +47,8 @@ navBar = nav_ [class_ ".nav"] $ do
     -- TODO Make these actual links when I actually make the pages
     h2_ [class_ "nord11"] "Blog"
     h2_ [class_ "nord12"] "Resume"
-    h2_ [class_ "nord15"] "About"
+    h2_ [class_ "nord15"] $ do
+      a_ [href_ "/about.html"] "About"
 
 
 -- Takes a list of hex values and generate buttons for them

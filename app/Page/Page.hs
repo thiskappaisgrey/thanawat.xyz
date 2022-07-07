@@ -36,6 +36,9 @@ styleSheet = do
     C.verticalAlign (px 0)
     fontColor $ parse nord4
     fontFamily ["FreeMono"] []
+  a ? do
+    color inherit
+    textDecoration inherit
   p <> i ? do
     fontFamily ["FreeSans"] []
   ".pbody" ? do
