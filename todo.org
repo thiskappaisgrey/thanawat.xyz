@@ -27,6 +27,8 @@
 ** TODO Get the metadata from the org document in order to populate the index page
 
 [[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
+** TODO Later, I might want to have more control over what classes to add and such over each HTML element, but for now, just using CSS selectors works just fine so..
+** TODO Maybe also work on refactoring the CSS of the page
 * Done tasks
 ** DONE Creating a live reloading dev server for my static site
 CLOSED: [2022-06-17 Fri 19:26]
@@ -45,6 +47,7 @@ CLOSED: [2022-06-17 Fri 19:26]
 [[file:~/code/new-website/reload/Main.hs::run 3000 (staticApp $ (defaultWebAppSettings "./build") { ssRedirectToIndex = True })]]
 ** DONE Create stylesheets for components using clay
 CLOSED: [2022-06-17 Fri 19:27]
+
 
 
 [[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]

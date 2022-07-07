@@ -9,6 +9,7 @@ import Colors
 
 
 -- I can pull up the metadata into a new type but I'll keep it like this for now
+-- TODO allow for ability to add multiple stylesheets here
 baseTemplate ::  String ->  Html () -> Html ()
 baseTemplate bodyClass body =
   let header = head_ $
@@ -37,6 +38,7 @@ navSheet = nav ? do
       fontSize (C.rem 1.5)
     h2 ? do
       fontSize (C.rem 1.2)
+-- This looks terrible on mobile, I need to somehow add a dropdown navBar for mobile.
 navBar :: Html ()
 navBar = nav_ [class_ ".nav"] $ do
   h1_ [class_ "nord13"] "Thanawat.xyz"

@@ -28,7 +28,7 @@ reloadBrowserOnFileChange doneCompile connsMvar = forever $ do
   forM_ conns (\conn -> WS.sendTextData conn ("refresh the browser" :: T.Text))
   -- TODO this part is super buggy and I'm not sure why.. The connections don't actually get reset after browser refresh for some reason
   -- This refresh is actually run, but somehow multiple connections are made, even though it's just one browser. The connections didn't close properly maybe?
-  modifyMVar_ connsMvar (\_ -> return [])
+  -- modifyMVar_ connsMvar (\_ -> return [])
 
 static :: Application
 static = staticApp $ defaultFileServerSettings "./build"
@@ -43,9 +43,9 @@ app doneCompile connsMVar = websocketsOr defaultConnectionOptions wsApp static
       WS.withPingThread conn 30 (return ()) $ do -- Maybe I need to move the forever here?? not sure what's going on..
 
         putStrLn "Accepting connection from browser"
-
-        conns <- modifyMVar connsMVar (\s -> do
-                                          let s' = conn:s -- only do the computation once
+        -- TODO What if I just throw away old conns on new connection instead?
+        conns <- modifyMVar connsMVar (\_ -> do
+                                          let s' = [conn] -- only do the computation once
                                           return (s',s')) -- add the connection to the connections MVar
         putStrLn $ mconcat ["There are now: ", show $ length conns, " clients connected" ]
         reloadBrowserOnFileChange doneCompile connsMVar

@@ -19,6 +19,8 @@ import Development.Shake.FilePath
 import Development.Shake.Forward
 import qualified Lucid as L
 import qualified Page as P
+import qualified Page.About as PA
+import qualified Page.Index as PI
 import Slick
 import Types
 import Network.Wai.Handler.Warp
@@ -92,7 +94,7 @@ buildPost srcPath = cacheAction ("build" :: T.Text, srcPath) $ do
 
 buildIndex :: [Post] -> Action ()
 buildIndex post =
-  writeFile' (outputFolder </> "index.html") $ P.index post
+  writeFile' (outputFolder </> "index.html") $ P.wrapPage $ PI.index post
 
 -- | Copy all static files from the listed folders to their destination
 copyStaticFiles :: Action ()
@@ -104,6 +106,7 @@ copyStaticFiles = do
 buildCss :: Action ()
 buildCss = do
   let cssText = C.renderWith C.compact [] P.styleSheet
+  -- TODO Maybe it's a better idea to have each "page" have thier own CSS file but maybe not? Not sure yet though
   writeFile' (outputFolder </> "styleSheet.css") $ TZ.unpack cssText
 -- Requires a "Partial" type contraint but I don't know which Partial it is..
 readFileText :: FilePath -> Action T.Text
@@ -115,9 +118,17 @@ buildAbout :: Action ()
 buildAbout = do
   -- the wording "template" doesn't exactly make sense here? so use "page" instead?
   aboutContent <- readFileText "./site/page/about.org"
-  -- Use this to test in ghci: Data.Text.IO.readFile "./site/page/about.org" >>= print . Data.Org.org
   let orgData = O.org aboutContent
-  liftIO $ print orgData
+  case orgData of
+    Just o -> do
+      let oe = PA.orgDocToData o
+      case oe of
+        Left e ->
+          liftIO $ putStrLn ("There was an error with the parsing the org file: " <> show e)
+        Right o ->
+          writeFile' (outputFolder </> "about.html") $ P.wrapPage $ PA.about o
+    Nothing ->
+      liftIO $ putStrLn "About File could not be parsed"
 
 
 
@@ -126,7 +137,7 @@ buildAbout = do
 buildRules :: Action ()
 buildRules = do
   posts <- buildPosts
-  -- buildAbout
+  buildAbout
   buildIndex posts
   buildCss
   copyStaticFiles

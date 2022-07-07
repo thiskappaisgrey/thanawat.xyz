@@ -9,6 +9,7 @@ import qualified Data.Text as T
 import Colors
 import Page.Components
 
+  
 callButtons :: [(T.Text, T.Text)] -> Html ()
 callButtons = do
   div_ [class_ "spacing"] . mapM_ (\(buttonText, color) -> button_ [class_ $ "button-" <> color] $ toHtml buttonText)
@@ -50,7 +51,5 @@ heroSection = div_ [class_ "hero"] $ do
       p_ "I'm a student at UCSB studying Computer Science. \
          \I have a passion for functional programming and learning new things. My favorite languages are Haskell and Typescript." -- TODO come up with a good quote
       callButtons [("My Blog", "nord11"), ("My Resume", "nord12"), ("About Me", "nord15")] -- TODO will refactor later
-index :: [Post] -> String
-index posts = TZ.unpack $ renderText $ baseTemplate "" $ do
-  navBar
-  heroSection
+index :: [Post] -> Html ()
+index posts = heroSection
