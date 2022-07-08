@@ -30,6 +30,7 @@ navSheet = nav ? do
   display flex
   justifyContent spaceBetween
   marginBottom (C.rem 1)
+  -- lineHeight (unitless 1.0)
   
   C.div ? do
     display flex
@@ -42,7 +43,7 @@ navSheet = nav ? do
 -- This looks terrible on mobile, I need to somehow add a dropdown navBar for mobile.
 navBar :: Html ()
 navBar = nav_ [class_ ".nav"] $ do
-  h1_ [class_ "nord13"] "Thanawat.xyz"
+  h1_ [class_ "nord13"] $ a_ [href_ "/"] "Thanawat.xyz"
   div_ $ do
     -- TODO Make these actual links when I actually make the pages
     h2_ [class_ "nord11"] "Blog"
@@ -76,3 +77,6 @@ colorsSheet = do
   ".nord13" ? color (parse nord13)
   ".nord14" ? color (parse nord14)
   ".nord15" ? color (parse nord15)
+
+
+-- TODO add footer..

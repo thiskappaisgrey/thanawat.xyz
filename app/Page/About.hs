@@ -88,7 +88,10 @@ interestsSection (About _ interests) =
 -- TODO Around Width of 850ish I need to change my layout
 aboutSheet :: Css
 aboutSheet = ".about" ? do
+  h1 <> h2 ? do
+    sym2 padding (vh 1) 0
   ".square" ? do
+    -- Should be min width actually. This will be the placeholder for images
     width (px 400)
     height (px 400)
     backgroundColor $ parse nord8
@@ -110,7 +113,7 @@ aboutSheet = ".about" ? do
   ".intro" ? do
     sym2 padding 0 (pct 5)
     sym2 margin (pct 5) 0
-    textAlign center
+    -- textAlign center
   h1 ? do
     textAlign center
 

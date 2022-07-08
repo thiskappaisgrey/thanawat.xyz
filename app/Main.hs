@@ -94,7 +94,7 @@ buildPost srcPath = cacheAction ("build" :: T.Text, srcPath) $ do
 
 buildIndex :: [Post] -> Action ()
 buildIndex post =
-  writeFile' (outputFolder </> "index.html") $ P.wrapPage $ PI.index post
+  writeFile' (outputFolder </> "index.html") $ P.wrapPage False $ PI.index post
 
 -- | Copy all static files from the listed folders to their destination
 copyStaticFiles :: Action ()
@@ -126,7 +126,7 @@ buildAbout = do
         Left e ->
           liftIO $ putStrLn ("There was an error with the parsing the org file: " <> show e)
         Right o ->
-          writeFile' (outputFolder </> "about.html") $ P.wrapPage $ PA.about o
+          writeFile' (outputFolder </> "about.html") $ P.wrapPage True $ PA.about o
     Nothing ->
       liftIO $ putStrLn "About File could not be parsed"
 

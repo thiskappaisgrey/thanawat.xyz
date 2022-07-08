@@ -9,19 +9,28 @@ import qualified Data.Text as T
 import Colors
 import Page.Components
 
-  
-callButtons :: [(T.Text, T.Text)] -> Html ()
+-- data CallButton = CallButton {
+--   cName :: T.Tex
+--                              }  
+callButtons :: [(T.Text, T.Text, T.Text)] -> Html ()
 callButtons = do
-  div_ [class_ "spacing"] . mapM_ (\(buttonText, color) -> button_ [class_ $ "button-" <> color] $ toHtml buttonText)
+  div_ [class_ "spacing"] . mapM_ (\(buttonText, color, link) -> a_ [class_ $ "button-" <> color, href_ link] $ toHtml buttonText)
   -- postList posts
 heroSheet :: Css
 heroSheet = ".hero" ? do
+  display flex
+  flexDirection column
+  justifyContent center
+  alignContent center
+  height (vh 100)
+  
   textAlign center
   lineHeight (C.rem 1.5)
 
   width (pct 33)
   marginLeft auto -- margin auto centers things
   marginRight auto
+
   star ? do
     marginBottom (C.rem 1.5)
   h1 ? do
@@ -33,6 +42,7 @@ heroSheet = ".hero" ? do
     marginRight (C.rem 0.8)
   ".circle" ? do
     sym borderRadius (C.pct 50)
+    alignSelf center
     width (px 25)
     height (px 25)
     display inlineBlock
@@ -50,6 +60,8 @@ heroSection = div_ [class_ "hero"] $ do
       h1_ "Hi, My name is Thanawat!"
       p_ "I'm a student at UCSB studying Computer Science. \
          \I have a passion for functional programming and learning new things. My favorite languages are Haskell and Typescript." -- TODO come up with a good quote
-      callButtons [("My Blog", "nord11"), ("My Resume", "nord12"), ("About Me", "nord15")] -- TODO will refactor later
+  -- TODO Add Links
+      callButtons [("My Blog", "nord11", "/"), ("My Resume", "nord12", "/"), ("About Me", "nord15", "/about.html")] -- TODO will refactor later
 index :: [Post] -> Html ()
-index posts = heroSection
+index posts = do
+  heroSection

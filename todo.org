@@ -1,13 +1,5 @@
 #+TITLE: Todo
 * Inbox (high prio to low)
-** TODO About Page
-- [ ] Model the data for the about page
-- [ ] Figure out how convert the Org data into the model
-- [ ] Then design the page given the data. Essentially, I need to copy
-  paste some code from org-mode lucid b/c the functions are not
-  exposed (specifically, paragraph to html and such. This seems like a
-  decent solution for now, but maybe make an issue later?)
-
 ** TODO Create page transitions using javascript
 
 [[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
@@ -29,6 +21,7 @@
 [[file:~/code/new-website/app/Main.hs::-- convert fullPostData]]
 ** TODO Later, I might want to have more control over what classes to add and such over each HTML element, but for now, just using CSS selectors works just fine so..
 ** TODO Maybe also work on refactoring the CSS of the page
+** TODO Add Footer
 * Done tasks
 ** DONE Creating a live reloading dev server for my static site
 CLOSED: [2022-06-17 Fri 19:26]
@@ -51,7 +44,20 @@ CLOSED: [2022-06-17 Fri 19:27]
 
 
 [[file:~/code/new-website/app/Page.hs::index = T.unpack $ renderText $ baseTemplate $ h1_ "hello world"]]
+** DONE About Page
+CLOSED: [2022-07-08 Fri 13:07]
+- [ ] Model the data for the about page
+- [ ] Figure out how convert the Org data into the model
+- [ ] Then design the page given the data. Essentially, I need to copy
+  paste some code from org-mode lucid b/c the functions are not
+  exposed (specifically, paragraph to html and such. This seems like a
+  decent solution for now, but maybe make an issue later?)
+
+
 * Learnings
 ** How this library works
 - In order to build posts, the slick static site builder uses the /shake/ build tool(using the [[https://hackage.haskell.org/package/shake-0.19.5/docs/Development-Shake-Forward.html][Shake.Forward]] ) module in order to build the website
 - To create a /rule/ you need to generate an Action Monad. The Action monad allows you to write /rules/ that can take a /FilePath/, do something with the file(like get metadata and such) and then output some static files
+  
+  
+  
