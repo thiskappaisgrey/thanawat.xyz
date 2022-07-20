@@ -27,5 +27,5 @@ in pkgs.haskell-nix.project {
   };
   # Specify the GHC version to use.
   compiler-nix-name = "ghc8107"; # Not required for `stack.yaml` based projects.
-  index-state = "2021-08-30T00:00:00Z";
+  index-state = "2022-07-17T22:42:10Z";
 }

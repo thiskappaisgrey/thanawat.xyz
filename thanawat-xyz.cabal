@@ -46,7 +46,7 @@ executable build-site
                     , lens
                     , lens-aeson
                     , shake
-                    , slick
+                    -- , slick
                     , text
                     , time
                     , unordered-containers

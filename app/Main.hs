@@ -21,7 +21,7 @@ import qualified Lucid as L
 import qualified Page as P
 import qualified Page.About as PA
 import qualified Page.Index as PI
-import Slick
+-- import Slick
 import Types
 import Network.Wai.Handler.Warp
 import Network.Wai.Application.Static
