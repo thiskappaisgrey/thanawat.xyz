@@ -3,11 +3,16 @@
 module Page.Index where
 import Lucid
 import Clay as C hiding (type_, title, url)
+import qualified Clay.Flexbox as F
 import Types
 import qualified Data.Text.Lazy as TZ
 import qualified Data.Text as T
 import Colors
 import Page.Components
+import qualified Clay.Media as Media
+import Control.Lens (Unwrapped)
+import Lucid.Bootstrap (rowFluid_)
+
 
 -- data CallButton = CallButton {
 --   cName :: T.Tex
@@ -23,13 +28,15 @@ heroSheet = ".hero" ? do
   justifyContent center
   alignContent center
   height (vh 100)
-  
+  maxWidth $ px 800
+
   textAlign center
   lineHeight (C.rem 1.5)
-
-  width (pct 33)
+  -- do query C.all [Media.maxWidth 900] $ do
+  --      width (pct 33)
   marginLeft auto -- margin auto centers things
   marginRight auto
+  -- marginTop (C.rem 1.0)
 
   star ? do
     marginBottom (C.rem 1.5)
@@ -37,9 +44,23 @@ heroSheet = ".hero" ? do
     fontColor $ parse nord13
   p ? do
     fontSize (C.rem 1.3)
+  -- ".mw" ? maxWidth (pct 50)
   ".spacing" |> star ? do
     marginLeft (C.rem 0.8)
     marginRight (C.rem 0.8)
+    marginBottom (C.rem 1.5)
+
+  ".spacing" ? do
+    -- marginLeft (C.rem 0.8)
+    -- marginRight (C.rem 0.8)
+    -- overflowWrap normal
+    -- maxWidth (pt 80)
+    -- height (vh 50)
+    display flex
+    flexWrap F.wrap
+    justifyContent center
+    -- display grid
+    -- gridTemplateColumns [fr 0.33 , fr 0.33 , fr 0.33]
   ".circle" ? do
     sym borderRadius (C.pct 50)
     alignSelf center
@@ -47,9 +68,14 @@ heroSheet = ".hero" ? do
     height (px 25)
     display inlineBlock
     backgroundColor $ parse nord8
+    -- marginTop (pct 10)
+    -- marginBottom (pct 5)
+
   ".bigCircle" ? do
     width (C.rem 15)
     height (C.rem 15)
+    marginTop (pct 10)
+    -- marginBottom (pct 5)
 
 
 heroSection :: Html ()

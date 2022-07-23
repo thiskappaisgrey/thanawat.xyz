@@ -67,6 +67,10 @@ createButton = mapM_ (\color ->
                                   borderWidth (C.px 0)
                                   fontWeight bold
                                   fontColor $ parse nord4
+                                  whiteSpace nowrap
+                                  -- flexShrink 0
+                                  -- maxWidth (pct 100)
+                                  position relative
                                   hover & backgroundColor (darken 0.15 $ parse $ snd color)
                      )
 
