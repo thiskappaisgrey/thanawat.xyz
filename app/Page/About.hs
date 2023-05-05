@@ -1,4 +1,4 @@
-module Page.About (about, aboutSheet, orgDocToData) where
+module Page.About (about, orgDocToData) where
 import Types
 import           Data.Org  --                 (OrgDoc, orgFile, OrgFile (OrgFile))
 import qualified Data.Map                    as M
@@ -6,7 +6,6 @@ import           Data.List  (find)
 import           Data.List.NonEmpty (toList)
 import qualified Data.Org.Lucid as O
 import           Lucid
-import           Clay
 import Page.Components (baseTemplate)
 import qualified Data.Text.Lazy as TZ
 import qualified Data.Text as T
@@ -23,13 +22,25 @@ orgDocToFile = OrgFile M.empty
 -- build up the page.
 data AboutError = PreambleNotFound
                 | InterestsNotFound
+                | ResearchNotFound
 instance Show AboutError where
   show PreambleNotFound = "Org header with 'preamble' tag not found"
   show InterestsNotFound = "Org header with 'interests' tag not found"
+  show ResearchNotFound = "Org header with 'research' tag not found"
 -- In my org file for about, I can find the "headings" by tag. The
 -- page has 2 sections: the "preamble" or Introduction and the
 -- "Interests" section which will be arranged differently
 -- NOTE: A thing with the haskell org-parser is that it expects a newline before each header, so keep that in mind
+
+findFromTag ::  T.Text -> e -> [Section] -> Either e Section
+findFromTag tag error s =
+      let a = find (elem tag . sectionTags) s
+      in
+        case a of
+          Nothing -> Left error
+          Just sec -> Right sec
+  
+  
 orgDocToData :: OrgFile -> Either AboutError About
 orgDocToData o =
   do
@@ -43,19 +54,12 @@ orgDocToData o =
                 , aboutSections = interestsToAboutSection <$> abtSecs }
   where
     findPreamble :: [Section] -> Either AboutError Section
-    findPreamble s =
-      let a = find (elem "preamble" . sectionTags) s
-      in
-        case a of
-          Nothing -> Left PreambleNotFound
-          Just sec -> Right sec
+    findPreamble = findFromTag  "preamble" PreambleNotFound
     findInterests :: [Section] -> Either AboutError Section
-    findInterests s =
-      let a = find (elem  "interests" . sectionTags) s
-      in
-        case a of
-          Nothing -> Left InterestsNotFound
-          Just sec -> Right sec
+    findInterests = findFromTag  "interests" InterestsNotFound
+    findResearch :: [Section] -> Either AboutError Section
+    findResearch = findFromTag  "research" ResearchNotFound
+  
   -- takes interests with the "interests" tag and turns it into an AboutSection
     interestsToAboutSection :: Section -> AboutSection
     interestsToAboutSection s =
@@ -74,11 +78,11 @@ interestToHtml b (AboutSection h c i ) =
   do
     -- let k = "hello" :: T.Text
     -- TODO How do I switch the order? Maybe by class name?
-    div_ [ class_ $ bool "aboutS1" "aboutS2" b ] $ do
-        div_ [ class_ "imgSec"]$ do
-                div_ [ class_ "square"] ""
-        div_ [ class_ "textSec"]$ do
-                h2_ $ toHtml h
+    div_ [ class_ $ bool "flex flex-row my-8" "flex flex-row-reverse my-8" b ] $ do
+        div_ [ class_ "w-1/2 flex items-center justify-center"]$ do
+                div_ [ class_ "w-60 h-60 bg-blue-500"] ""
+        div_ [ class_ "w-1/2 text-sm"]$ do
+                h2_ [class_ "text-lg" ] $ toHtml h
                 O.body O.defaultStyle c
 interestsSection :: About -> Html ()
 interestsSection (About _ interests) =
@@ -86,44 +90,14 @@ interestsSection (About _ interests) =
 -- make about section
 -- TODO Responsive design is a bitch
 -- TODO Around Width of 850ish I need to change my layout
-aboutSheet :: Css
-aboutSheet = ".about" ? do
-  h1 <> h2 ? do
-    sym2 padding (vh 1) 0
-  ".square" ? do
-    -- Should be min width actually. This will be the placeholder for images
-    width (px 400)
-    height (px 400)
-    backgroundColor $ parse nord8
-  ".textSec" ? do
-    width (pct 50)
-    sym2 padding 0 (pct 5)
-  ".imgSec" ? do
-    width (pct 50)
-    sym2 padding 0 (pct 5)
-  ".aboutS1" ? do
-    display flex
-    flexDirection row
-    sym2 margin (pct 5) 0
-  ".aboutS2" ? do
-    display flex
-    flexDirection rowReverse
-    justifyContent center
-    sym2 margin (pct 5) 0
-  ".intro" ? do
-    sym2 padding 0 (pct 5)
-    sym2 margin (pct 5) 0
-    -- textAlign center
-  h1 ? do
-    textAlign center
-
 about :: About -> Html ()
 -- abstract into a function??
 about ab =
   do
-  div_ [classes_ ["pbody" , "about"]] $ do
-     div_ [class_ "intro"] $ do 
-       h1_ "Introduction"
+   
+  div_ [class_ "flex flex-col"] $ div_ [classes_ ["pbody" , "about", "flex", "flex-col", "w-2/3", "place-self-center"]] $ do
+     div_  $ do 
+       h1_ [class_ "text-xl text-center text-amber-50"] "Introduction"
        preambleSection ab
-     h1_ "My Interests"
+     h1_ [class_ "text-xl text-center"] "My Interests"
      interestsSection ab

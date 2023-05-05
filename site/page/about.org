@@ -5,8 +5,16 @@ University of California, Santa Barbara. I try to keep my life
 interesting (as much as it can be) but because I am human, I go
 through similar struggles as you do. I wanted to make this website
 because I wanted to have a place to share my writings and my ideas, so
-here it is. Hope you enjoy your stay and remember to smile lots.
+here it is.
 
+* Research and Coding Interests                                    :research:
+Right now, I'm doing a masters program at UCSB. I haven't worked on
+any (public) research projects or started on my masters projects yet,
+but here are some of interesting research topics I came across.
+
++ Equality Saturation and Datalog
++ Temporal Logic ( LTL, CTL, their extensions)
++ Dependent and Linear types
 
 * My Interests                                                    :interests:
 

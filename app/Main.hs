@@ -2,7 +2,7 @@
 
 module Main where
 
-import Control.Lens
+-- import Control.Lens
 import Control.Monad
 import Data.Aeson as A
 import Data.Aeson.Lens
@@ -21,12 +21,16 @@ import qualified Lucid as L
 import qualified Page as P
 import qualified Page.About as PA
 import qualified Page.Index as PI
--- import Slick
 import Types
 import Network.Wai.Handler.Warp
 import Network.Wai.Application.Static
-import qualified Clay as C
 import System.Directory (removeDirectoryRecursive) -- in case I want to remove directory recursively on rebuild
+
+import qualified Web.Tailwind as Tailwind
+import Control.Monad.Logger (runStdoutLoggingT)
+  
+import Optics.Core ((%), (.~), (^.), (&))
+import Data.Default (def)
 
 outputFolder :: FilePath
 outputFolder = "build/"
@@ -45,10 +49,10 @@ maybeToValidation msg (Just val) = V.Success val
 newtype OrgMetaError = OrgMetaError String
 
 instance Semigroup OrgMetaError where
-  (<>) = mappend
+  (OrgMetaError a) <>  (OrgMetaError b)= OrgMetaError $ mconcat [a, ", ", b]
 
 instance Monoid OrgMetaError where
-  mappend (OrgMetaError a) (OrgMetaError b) = OrgMetaError $ mconcat [a, ", ", b]
+  mappend   = (<>)
   mempty = OrgMetaError ""
 
 getMetaData :: M.Map T.Text T.Text -> T.Text -> Validation OrgMetaError Post
@@ -103,11 +107,6 @@ copyStaticFiles = do
   void $
     forP filepaths $ \filepath ->
       copyFileChanged ("site" </> filepath) (outputFolder </> filepath)
-buildCss :: Action ()
-buildCss = do
-  let cssText = C.renderWith C.compact [] P.styleSheet
-  -- TODO Maybe it's a better idea to have each "page" have thier own CSS file but maybe not? Not sure yet though
-  writeFile' (outputFolder </> "styleSheet.css") $ TZ.unpack cssText
 -- Requires a "Partial" type contraint but I don't know which Partial it is..
 readFileText :: FilePath -> Action T.Text
 readFileText x = need [x] >> liftIO (T.IO.readFile x)
@@ -131,6 +130,14 @@ buildAbout = do
       liftIO $ putStrLn "About File could not be parsed"
 
 
+-- build tailwind
+compileTailwindCss :: FilePath -> [FilePath] -> Action ()
+compileTailwindCss cssPath genPaths = liftIO $ runStdoutLoggingT $
+    do Tailwind.runTailwind $ def
+                  & Tailwind.tailwindConfig % Tailwind.tailwindConfigContent .~ genPaths
+                  & Tailwind.tailwindOutput .~ cssPath
+                  & Tailwind.tailwindMode .~ Tailwind.Production
+
 
 -- | Specific build rules for the Shake system
 --   defines workflow to build the website
@@ -139,9 +146,9 @@ buildRules = do
   posts <- buildPosts
   buildAbout
   buildIndex posts
-  buildCss
   copyStaticFiles
-
+  -- TODO the second argument needs to be hall the haskell files
+  compileTailwindCss (outputFolder </> "tailwind.css") ["./app/Page/*.hs"]
 
 
 -- | Kick it all off
@@ -153,5 +160,5 @@ main = do
             { shakeVerbosity = Chatty,
               shakeLintInside = [""]
             }
-  removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
+  -- removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
   shakeArgsForward shOpts buildRules

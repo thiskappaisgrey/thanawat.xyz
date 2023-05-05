@@ -2,92 +2,40 @@
 
 module Page.Index where
 import Lucid
-import Clay as C hiding (type_, title, url)
-import qualified Clay.Flexbox as F
 import Types
 import qualified Data.Text.Lazy as TZ
 import qualified Data.Text as T
 import Colors
 import Page.Components
-import qualified Clay.Media as Media
 import Control.Lens (Unwrapped)
 import Lucid.Bootstrap (rowFluid_)
 
+import Data.Function ((&))
+import Development.Shake.FilePath
 
--- data CallButton = CallButton {
---   cName :: T.Tex
---                              }  
 callButtons :: [(T.Text, T.Text, T.Text)] -> Html ()
 callButtons = do
-  div_ [class_ "spacing"] . mapM_ (\(buttonText, color, link) -> a_ [class_ $ "button-" <> color, href_ link] $ toHtml buttonText)
+  div_ [class_ "space-x-10"] . mapM_ (\(buttonText, color, link) -> a_ [class_ $ "rounded-sm p-2 bg-amber-600 hover:bg-amber-900", href_ link] $ toHtml buttonText)
   -- postList posts
-heroSheet :: Css
-heroSheet = ".hero" ? do
-  display flex
-  flexDirection column
-  justifyContent center
-  alignContent center
-  height (vh 100)
-  maxWidth $ px 800
-
-  textAlign center
-  lineHeight (C.rem 1.5)
-  -- do query C.all [Media.maxWidth 900] $ do
-  --      width (pct 33)
-  marginLeft auto -- margin auto centers things
-  marginRight auto
-  -- marginTop (C.rem 1.0)
-
-  star ? do
-    marginBottom (C.rem 1.5)
-  h1 ? do
-    fontColor $ parse nord13
-  p ? do
-    fontSize (C.rem 1.3)
-  -- ".mw" ? maxWidth (pct 50)
-  ".spacing" |> star ? do
-    marginLeft (C.rem 0.8)
-    marginRight (C.rem 0.8)
-    marginBottom (C.rem 1.5)
-
-  ".spacing" ? do
-    -- marginLeft (C.rem 0.8)
-    -- marginRight (C.rem 0.8)
-    -- overflowWrap normal
-    -- maxWidth (pt 80)
-    -- height (vh 50)
-    display flex
-    flexWrap F.wrap
-    justifyContent center
-    -- display grid
-    -- gridTemplateColumns [fr 0.33 , fr 0.33 , fr 0.33]
-  ".circle" ? do
-    sym borderRadius (C.pct 50)
-    alignSelf center
-    width (px 25)
-    height (px 25)
-    display inlineBlock
-    backgroundColor $ parse nord8
-    -- marginTop (pct 10)
-    -- marginBottom (pct 5)
-
-  ".bigCircle" ? do
-    width (C.rem 15)
-    height (C.rem 15)
-    marginTop (pct 10)
-    -- marginBottom (pct 5)
-
+socialMediaButtons ::  Html ()
+socialMediaButtons = do
+  [("github", "https://github.com/thiskappaisgrey")
+    , ("linkedin", "https://www.linkedin.com/in/thanawat-techaumnuaiwit-109100184/")
+    , ("gitlab", "https://gitlab.com/thiskappaisgrey")
+    , ("email", "mailto:thanawat6@protonmail.com")
+    ] & div_ [class_ "flex space-x-10"] . mapM_ (\(site, link) -> a_ [href_ link] $ img_ [class_ "w-8 h-8", src_ $ T.pack ("/images/" </> site <.> ".svg")])
+  
 
 heroSection :: Html ()
-heroSection = div_ [class_ "hero"] $ do
+heroSection = div_ [class_ "flex flex-col justify-center h-screen items-center p-8 space-y-5"] $ do
       -- div_ [class_ "circle bigCircle"] ""
-      img_ [src_ "/images/me_square.jpeg", class_ "bigCircle circle"]
-      div_ [class_ "spacing"] $ mapM_ (\_ -> div_ [class_ "circle"] "") [1..3] -- TODO add social media links..
-      h1_ "Hi, My name is Thanawat!"
-      p_ "I'm a student at UCSB studying Computer Science. \
-         \I have a passion for functional programming and learning new things. My favorite languages are Haskell and Typescript." -- TODO come up with a good quote
+      img_ [src_ "/images/me_square.jpeg", class_ "rounded-full w-64 w-64"]
+      h1_ [class_ "text-xl text-center"] "Hi, My name is Thanawat!"
+      socialMediaButtons
+      p_ [class_ "max-w-md"] "I'm a student at UCSB studying Computer Science. \
+         \I have a passion for functional programming and learning new things. My favorite languages are Haskell, Emacs Lisp, and Rust." -- TODO come up with a good quote
   -- TODO Add Links
-      callButtons [("My Blog", "nord11", "/"), ("My Resume", "nord12", "/"), ("About Me", "nord15", "/about.html")] -- TODO will refactor later
+      callButtons [("My Blog", "red-500", "/"), ("My Resume", "green-500", "/"), ("About Me", "blue-500", "/about.html")] -- TODO will refactor later
 index :: [Post] -> Html ()
 index posts = do
   heroSection
