@@ -207,5 +207,5 @@ main = do
             { shakeVerbosity = Chatty,
               shakeLintInside = [""]
             }
-  removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
+  -- removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
   shakeArgsForward shOpts buildRules

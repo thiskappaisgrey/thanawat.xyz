@@ -82,8 +82,7 @@ type SectionStyling = Int -> Html () -> Html () -> Html ()
 -- functionality.
 defaultStyle :: OrgStyle
 defaultStyle = OrgStyle
-  { includeTitle = True
-  , includeDate = True
+  { includeTitle = False
   , tableOfContents = TOC 3
   , highlighting = codeHTML
   , sectionStyling = \_ a b -> a >> b
@@ -102,10 +101,11 @@ html os o@(OrgFile m _) = html_ $ do
 body :: OrgStyle -> OrgFile -> Html ()
 body os (OrgFile m od) = do
   div_ [class_ "my-4 flex flex-col"]$ do 
-        when (includeTitle os) . traverse_ (h1_ [class_ "text-4xl text-center"] . toHtml) $ M.lookup "TITLE" m
-        traverse_ (h2_ [class_ "text-sm text-center"] . toHtml) $ M.lookup "DATE" m
-        h2_ [class_ "text-xs text-center"] "by Thanawat Techaumnuaiwit"
-        hr_ [class_ "w-1/3 place-self-center"]
+        when (includeTitle os) $ do
+          traverse_ (h1_ [class_ "text-4xl text-center"] . toHtml) $ M.lookup "TITLE" m
+          traverse_ (h2_ [class_ "text-sm text-center"] . toHtml) $ M.lookup "DATE" m
+          h2_ [class_ "text-xs text-center"] "by Thanawat Techaumnuaiwit"
+          hr_ [class_ "w-1/3 place-self-center"]
   div_ [class_ "flex flex-col w-2/3 place-self-center text-sm"] $ orgHTML os od
 
 -- | A unique identifier that can be used as an HTML @id@ attribute.
