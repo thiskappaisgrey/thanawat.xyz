@@ -36,6 +36,7 @@ executable build-site
                  , Page.Post
                  , Page.Index
                  , Page.About
+                 , Atom
 
     -- LANGUAGE extensions used by modules in this package.
     default-extensions: OverloadedStrings
