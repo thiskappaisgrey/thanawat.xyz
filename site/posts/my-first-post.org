@@ -1,4 +1,9 @@
 #+TITLE: My First Post
-#+DATE: <2021-08-31 Tue>
+#+DATE: 2021-08-31 Tue
 
 * Hello world
+Hi, my name is Thanawat. This is my first post. I meant to write on
+this blog like, 2 years ago during the pandemic, but I never finished
+working on it. I think I procrastinated + got distracted with doing
+other things. I'll be sure to post more stuff here in the future ..
+theoretically haha.

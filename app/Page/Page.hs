@@ -23,9 +23,10 @@ postList postList = let
     ul_ $ mapM_ postItem postList
 
 wrapPage :: Bool -> Html () -> String
-wrapPage n p = TZ.unpack $ renderText $ baseTemplate "bg-slate-800 text-slate-200" $ do
+wrapPage n p = TZ.unpack $ renderText $ baseTemplate "bg-slate-800 text-slate-200 flex flex-col" $ do
   when n navBar
   p
+  
 -- For rendering individual posts
 post :: Html () -> String
-post orgHtml = TZ.unpack $ renderText $ baseTemplate "post" orgHtml
+post orgHtml = wrapPage True orgHtml

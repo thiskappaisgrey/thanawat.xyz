@@ -35,7 +35,7 @@ heroSection = div_ [class_ "flex flex-col justify-center h-screen items-center p
       p_ [class_ "max-w-md"] "I'm a student at UCSB studying Computer Science. \
          \I have a passion for functional programming and learning new things. My favorite languages are Haskell, Emacs Lisp, and Rust." -- TODO come up with a good quote
   -- TODO Add Links
-      callButtons [("My Blog", "red-500", "/"), ("My Resume", "green-500", "/"), ("About Me", "blue-500", "/about.html")] -- TODO will refactor later
-index :: [Post] -> Html ()
-index posts = do
+      callButtons [("My Blog", "red-500", "/posts"), ("My Resume", "green-500", "/"), ("About Me", "blue-500", "/about.html")] -- TODO will refactor later
+index :: Html ()
+index = do
   heroSection

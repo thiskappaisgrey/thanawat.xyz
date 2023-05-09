@@ -30,11 +30,12 @@ import Optics.Core ((%), (&), (.~), (^.))
 import qualified Page as P
 import qualified Page.About as PA
 import qualified Page.Index as PI
-import System.Directory (removeDirectoryRecursive)
+import System.Directory (removeDirectoryRecursive, Permissions (..), removeFile)
 import Types
 import qualified Web.Tailwind as Tailwind
 import Data.Time.Format.ISO8601 (iso8601Show)
 import Data.Time (getCurrentTime)
+import Page.Post (postList)
 
 outputFolder :: FilePath
 outputFolder = "build/"
@@ -106,10 +107,13 @@ buildPost srcPath = cacheAction ("build" :: T.Text, srcPath) $ do
   liftIO . putStrLn $ "Post: " <> show a
   return a
 
-buildIndex :: [Post] -> Action ()
-buildIndex post =
-  writeFile' (outputFolder </> "index.html") $ P.wrapPage False $ PI.index post
+buildIndex :: Action ()
+buildIndex  =
+  writeFile' (outputFolder </> "index.html") $ P.wrapPage False $ PI.index
 
+buildBlogIndex :: [Post] -> Action ()
+buildBlogIndex posts =
+  writeFile' (outputFolder </> "posts/index.html") $ P.wrapPage True $ postList posts
 -- | Copy all static files from the listed folders to their destination
 copyStaticFiles :: Action ()
 copyStaticFiles = do
@@ -122,7 +126,10 @@ copyStaticFiles = do
 readFileText :: FilePath -> Action T.Text
 readFileText x = need [x] >> liftIO (T.IO.readFile x)
 
--- TODO get "templates" as org files, filer out the necessary info then do some stuff with it?
+-- writeFileText ::  FilePath -> T.Text -> Action ()
+-- writeFileText f x = writeFile' f $ T.unpack x
+  
+-- 
 buildAbout :: Action ()
 buildAbout = do
   -- the wording "template" doesn't exactly make sense here? so use "page" instead?
@@ -183,11 +190,13 @@ buildRules :: Action ()
 buildRules = do
   posts <- buildPosts
   buildAbout
-  buildIndex posts
+  buildIndex
+  -- an index of all posts
+  buildBlogIndex posts
   buildSiteAtom posts
   copyStaticFiles
   -- TODO the second argument needs to be hall the haskell files
-  compileTailwindCss (outputFolder </> "tailwind.css") ["./app/Page/*.hs"]
+  compileTailwindCss (outputFolder </> "tailwind.css") ["./app/Page/*.hs" ,"./app/Data/Org/*.hs"]
 
 -- | Kick it all off
 main :: IO ()
@@ -198,5 +207,5 @@ main = do
             { shakeVerbosity = Chatty,
               shakeLintInside = [""]
             }
-  -- removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
+  removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
   shakeArgsForward shOpts buildRules
