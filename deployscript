@@ -1,9 +1,9 @@
-#!/run/current-system/sw/bin/env nix-shell
-#!nix-shell -i fish -p nodejs
+#!/run/current-system/sw/bin/env fish
 
 # Make sure to setup a worktree with:
-# git worktree add -B gh-pages deploy origin/gh-pages
+# git worktree add -B gh-pages build origin/gh-pages
 # first!
 cabal run build-site
 cd build
 git add . && git commit -m "Update site"
+git push
