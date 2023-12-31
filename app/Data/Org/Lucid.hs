@@ -84,9 +84,10 @@ defaultStyle :: OrgStyle
 defaultStyle = OrgStyle
   { includeTitle = False
   , tableOfContents = TOC 3
-  , highlighting = codeHTML
+  , highlighting = hlCodeHTML
   , sectionStyling = \_ a b -> a >> b
-  , separator = Just ' ' }
+  , separator = Just ' '
+  , includeDate = False }
 
 -- | Convert a parsed `OrgFile` into a full HTML document readable in a browser.
 html :: OrgStyle -> OrgFile -> Html ()
@@ -100,13 +101,13 @@ html os o@(OrgFile m _) = html_ $ do
 -- Does __not__ wrap contents in a @\<body\>@ tag.
 body :: OrgStyle -> OrgFile -> Html ()
 body os (OrgFile m od) = do
-  div_ [class_ "my-4 flex flex-col"]$ do 
+  div_ [class_ "my-4 self-center flex flex-col text-left"]$ do 
         when (includeTitle os) $ do
-          traverse_ (h1_ [class_ "text-4xl text-center"] . toHtml) $ M.lookup "TITLE" m
-          traverse_ (h2_ [class_ "text-sm text-center"] . toHtml) $ M.lookup "DATE" m
-          h2_ [class_ "text-xs text-center"] "by Thanawat Techaumnuaiwit"
-          hr_ [class_ "w-1/3 place-self-center"]
-  div_ [class_ "flex flex-col w-2/3 place-self-center text-sm"] $ orgHTML os od
+          traverse_ (h1_ [class_ "text-5xl"] . toHtml) $ M.lookup "TITLE" m
+          traverse_ (h2_ [class_ "text-sm"] . toHtml) $ M.lookup "DATE" m
+          h2_ [class_ "text-xs"] "by Thanawat Techaumnuaiwit"
+          hr_ [class_ "w-full my-2"]
+  div_ [class_ "flex flex-col place-self-center text-sm"] $ orgHTML os od
 
 -- | A unique identifier that can be used as an HTML @id@ attribute.
 tocLabel :: NonEmpty Words -> T.Text
@@ -148,7 +149,7 @@ sectionHTML os depth (Section _ _ ws _ _ _ _ _ _ od) = sectionStyling os depth t
 
     heading :: [Attribute] -> Html () -> Html ()
     heading as h = case depth of
-      1 -> h2_ (class_ "text-lg text-center" : as) h
+      1 -> h2_ (class_ "text-3xl my-2" : as) h
       2 -> h3_ as h
       3 -> h4_ as h
       4 -> h5_ as h
@@ -170,6 +171,11 @@ codeHTML l t = div_ [class_ "org-src-container"]
   $ pre_ [classes_ $ "src" : maybe [] (\(Language l') -> ["src-" <> l']) l]
   $ toHtml t
 
+hlCodeHTML :: Highlighting
+hlCodeHTML l t = pre_ []
+  $ code_ [class_ $ maybe "" (\(Language l') -> "language-" <> l') l]
+  $ toHtml t
+
 paragraphHTML :: OrgStyle -> NonEmpty Words -> Html ()
 paragraphHTML os (h :| t) = wordsHTML h <> para h t
   where
@@ -186,7 +192,7 @@ paragraphHTML os (h :| t) = wordsHTML h <> para h t
         _         -> sep <> wordsHTML w <> para w ws
 
 listItemsHTML :: OrgStyle -> ListItems -> Html ()
-listItemsHTML os (ListItems t is) = orderedOrNot [class_ "org-ul"] $ traverse_ f is
+listItemsHTML os (ListItems t is) = orderedOrNot [class_ "list-decimal list-inside"] $ traverse_ f is
   where
     f :: Item -> Html ()
     f (Item ws next) = li_ $ paragraphHTML os ws >> traverse_ (listItemsHTML os) next

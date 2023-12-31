@@ -112,6 +112,14 @@ main = do
           print event
           putMVar fileMvar event
           )
+    _ <- watchTree
+      mgr -- manager
+      "./site/posts" -- directory to watch
+      (const True) -- predicate
+      (\event -> do
+          print event
+          putMVar fileMvar event
+          )
 
     -- sleep forever (until interrupted)
     forever $ threadDelay 1000000

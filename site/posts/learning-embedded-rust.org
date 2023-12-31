@@ -1,0 +1,72 @@
+#+TITLE: My Experience learning Embedded Rust
+#+DATE: 2023-08-12
+
+* My first Embedded-Rust  project
+So, for an IoT class I took at UCSB, there was a class project portion
+where you had to make any IoT project. Most of the students used
+Arduino to code their project.. I, of course, chose to write my
+project in Rust. I knew that getting something working in Rust would
+be very hard because, 1. I had no experience writing anything in
+embedded systems before(I did mean to read the Rust [[https://docs.rust-embedded.org/discovery/][Discovery book]] ,
+first edition, before.. During the end of covid, I even bought all of
+the required hardware for it.. But I never got the chance to) and 2. I
+barely knew any Rust(I mostly have a Haskell background, but even so,
+I barely know any Haskell). Anyways, this class gave me the
+opportunity to jump in head-first into learning embedded programming,
+from scratch, with almost no prior experience, which is always a fun
+thing to do.
+
+* The project.
+:PROPERTIES:
+:ID:       c59b5189-def1-452e-94ae-c60f7aa3571e
+:END:
+
+Since this was an IoT class, whatever we did had to connect to the
+internet. I've always wanted to make some sort of automated farm
+system, since it just seems kinda cool to grow an indoor garden. Since
+this was my first embedded project, I wanted to keep things simple,
+thus I decided to connect a micro-controller to a soil sensor, and
+have that micro-controller send the soil moisture data over the
+internet to a web server.
+
+The micro-controller I picked to accomplish this task was an [[https://learn.adafruit.com/adafruit-esp32-s2-tft-feather/overview][Adafruit
+ESP32S2 TFT]]. I picked this because:
+
+1. The ESP32 chip seems perfect for this because it has a wifi chip built in, so we can connect to the internet. It also seemed well supported by Rust.
+2. It comes with a screen, which means I can use the screen to log messages, in case something goes wrong 
+3. It comes with a Stemma-QT connector, which means that I can easily connect a soil sensor without soldering(I do know how to solder, but it's much easier to not solder).
+
+Now that I have the micro-controller, I had to figure out how to program it with Rust, which was the main challenge to this project.
+
+
+* Struggles
+
+** Peripheral Access
+- Looking at prior art: referencing the CircuitPython source and
+  another project that also used the ESP32S3:
+  https://github.com/taunusflieger/anemometer (which was where I
+  discovered the ESP32 TFT models from Adafruit).
+-
+
+code:
+
+#+begin_src rust
+fn main() -> anyhow::Result<()> {
+}
+#+end_src
+** Nix
+I am a NixOs user, and unfortunately, the ESP32 rust toolchain hasn't
+been packaged with Nix yet. For context, the ESP32S2 uses the Xtensa
+ISA, which (at the time), llvm doesn't natively support - meaning that
+the esp32 toolchain for Rust requires a fork of Rust + other
+compilation tools that targets the Xtensa architecture. I just
+assumed(not sure if I tried it) that the =espup= ESP32 Rust toolchain
+that installs the ESP32 toolchain on Nixos won't work, so I just used
+the docker image to get started.
+
+Eventually, I took a bit of time(like 7 hours) to write the
+nix-derivation for the rust esp32 toolchain:
+https://github.com/thiskappaisgrey/nixpkgs-esp-dev-rust .
+
+** Eduroam
+

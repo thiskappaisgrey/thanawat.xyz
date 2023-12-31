@@ -7,3 +7,11 @@ this blog like, 2 years ago during the pandemic, but I never finished
 working on it. I think I procrastinated + got distracted with doing
 other things. I'll be sure to post more stuff here in the future ..
 theoretically haha.
+
+* Some code here
+Some code here.
+
+#+begin_src haskell
+main = do
+  putStrLn "Hello world!"
+#+end_src

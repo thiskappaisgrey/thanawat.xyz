@@ -94,10 +94,9 @@ about :: About -> Html ()
 -- abstract into a function??
 about ab =
   do
-   
-  div_ [class_ "flex flex-col"] $ div_ [classes_ ["pbody" , "about", "flex", "flex-col", "w-2/3", "place-self-center"]] $ do
-     div_  $ do 
-       h1_ [class_ "text-xl text-center text-amber-50"] "Introduction"
-       preambleSection ab
-     h1_ [class_ "text-xl text-center"] "My Interests"
-     interestsSection ab
+  div_ [class_ "flex flex-col place-self-center"] $ div_ [classes_ ["pbody" , "about", "flex", "flex-col", "w-1/3", "place-self-center"]] $ do
+       h1_ [class_ "text-3xl text-amber-50 mt-4"] "About Me"
+       div_ [class_ "w-full"] $ preambleSection ab
+       
+     -- h1_ [class_ "text-xl text-center"] "My Interests"
+     -- interestsSection ab

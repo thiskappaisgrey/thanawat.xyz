@@ -31,6 +31,7 @@ import qualified Page as P
 import qualified Page.About as PA
 import qualified Page.Index as PI
 import System.Directory (removeDirectoryRecursive, Permissions (..), removeFile)
+import qualified System.Directory as D
 import Types
 import qualified Web.Tailwind as Tailwind
 import Data.Time.Format.ISO8601 (iso8601Show)
@@ -81,7 +82,8 @@ convertOrg postUrl orgText = do
       case metaData of
         Failure (OrgMetaError str) -> fail $ mconcat ["Post ", T.unpack postUrl, " is missing: ", str]
         V.Success m -> do
-          let post = P.post $ LO.body LO.defaultStyle file
+          let style = (LO.defaultStyle { LO.includeTitle  = True })
+          let post = P.post $ LO.body style  file
           writeFile' (outputFolder </> T.unpack postUrl) post
           return m
 
@@ -188,6 +190,7 @@ buildSiteAtom posts = do
 --   defines workflow to build the website
 buildRules :: Action ()
 buildRules = do
+  alwaysRerun
   posts <- buildPosts
   buildAbout
   buildIndex
@@ -207,5 +210,8 @@ main = do
             { shakeVerbosity = Chatty,
               shakeLintInside = [""]
             }
-  -- removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
+  shake <-  D.doesDirectoryExist "./.shake"
+  build <-  D.doesDirectoryExist "./build"
+  when shake $ removeDirectoryRecursive "./.shake" -- TODO remove when I'm done with editing the haskell files
+  when build $ removeDirectoryRecursive "./build" -- TODO remove when I'm done with editing the haskell files
   shakeArgsForward shOpts buildRules

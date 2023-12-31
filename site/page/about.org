@@ -1,6 +1,6 @@
 #+title: About Me
 * Introduction                                                     :preamble:
-Hi, my name is Thanawat. Right now I'm currently a student at the
+Hi, my name is Thanawat. Right now I'm currently a masters student at the
 University of California, Santa Barbara. I try to keep my life
 interesting (as much as it can be) but because I am human, I go
 through similar struggles as you do. I wanted to make this website

@@ -9,7 +9,7 @@ import Colors
 import Page.Components
 import Data.Org (Todo(TODO))
 import Control.Monad (when)
-  
+
 -- TODO Right now, I have 1 style sheet for thing but I might want to separate it later I guess?
 postList :: [Post] -> Html ()
 postList postList = let
@@ -26,7 +26,8 @@ wrapPage :: Bool -> Html () -> String
 wrapPage n p = TZ.unpack $ renderText $ baseTemplate "bg-slate-800 text-slate-200 flex flex-col" $ do
   when n navBar
   p
-  
+
 -- For rendering individual posts
 post :: Html () -> String
-post orgHtml = wrapPage True orgHtml
+post h = wrapPage True $
+  div_ [class_ "w-1/3 place-self-center"] h
