@@ -14,7 +14,9 @@ kill:
         kill -9 $(cat zolapid)
 
 deploy: (build)
+        #!/usr/bin/env bash
         cp -r ./public/* ./publish/
         cd ./publish/
         git add .
         git commit -m "Update site"
+        git push
