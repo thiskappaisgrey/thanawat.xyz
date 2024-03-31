@@ -4,14 +4,13 @@
         <loc>https://www.thanawat.xyz/</loc>
     </url>
     <url>
+        <loc>https://www.thanawat.xyz/about/</loc>
+    </url>
+    <url>
         <loc>https://www.thanawat.xyz/blog/</loc>
     </url>
     <url>
         <loc>https://www.thanawat.xyz/blog/first/</loc>
         <lastmod>2024-03-30</lastmod>
-    </url>
-    <url>
-        <loc>https://www.thanawat.xyz/blog/second/</loc>
-        <lastmod>2019-11-28</lastmod>
     </url>
 </urlset>
