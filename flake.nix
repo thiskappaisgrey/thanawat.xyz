@@ -12,7 +12,8 @@
       devShells."${system}".default = pkgs.mkShell {
         buildInputs = with pkgs; [
           zola
-          tailwindcss
+          # tailwindcss
+          nodejs
           tailwindcss-language-server
           emmet-ls
           just

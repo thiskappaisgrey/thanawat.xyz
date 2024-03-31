@@ -1,11 +1,12 @@
 init:
         git worktree add -B gh-pages publish origin/gh-pages
+        npm install
 build:
-        tailwindcss -i index.css -o static/index.css
+        npx tailwindcss -i index.css -o static/index.css
         zola build
 
 serve:
-        tailwindcss -i index.css -o static/index.css &> tailwind.out & echo $! > tailwindpid
+        npx tailwindcss -i index.css -o static/index.css &> tailwind.out & echo $! > tailwindpid
         zola serve &> zola.out & echo $! > zolapid
 kill:
         #!/usr/bin/env bash

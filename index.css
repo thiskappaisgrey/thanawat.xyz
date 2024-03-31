@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+        font-family: fira-code;
+        src: url(/fonts/Fira_Code/FiraCode-VariableFont_wght.ttf
+);
+}
+
+.md-style {
+        a {
+                @apply text-blue-500 active:text-blue-600 hover:text-blue-600;
+        } 
+        h1 {
+                @apply text-2xl;
+        }
+}
+
