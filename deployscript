@@ -3,7 +3,6 @@
 # Make sure to setup a worktree with:
 # git worktree add -B gh-pages build origin/gh-pages
 # first!
-cabal run build-site
-cd build
+cd ./publish
 git add . && git commit -m "Update site"
 git push

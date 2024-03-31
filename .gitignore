@@ -1,7 +1,8 @@
-/.shake/
-/result*
-/dist-newstyle/
-/dist/
-/build/
-/site/drafts/
 /.direnv/
+/tailwindpid
+/tailwind.out
+/zolapid
+/zola.out
+/public
+/publish
+
