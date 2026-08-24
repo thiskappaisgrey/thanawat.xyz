@@ -1,0 +1,106 @@
+/* ---------------------------------------------------------------
+   Structure only. Typography and colour are deliberately unset.
+   Those are yours to decide — steps 4 and 5.
+   --------------------------------------------------------------- */
+
+/* The measure. The single most consequential number on the site.
+   65-75 characters per line. Tune the ch value, not the px. */
+main {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 6rem;
+}
+
+/* Vertical rhythm comes from one variable, not scattered margins. */
+:root {
+  --space: 1.5rem;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --mono:  ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+                   Consolas, "DejaVu Sans Mono", monospace;
+}
+
+p, ul, ol, pre, blockquote, figure {
+  margin-block: var(--space);
+}
+
+h1, h2, h3 {
+  margin-block: calc(var(--space) * 1.5) var(--space);
+}
+
+
+/* --- Figures ---------------------------------------------------
+   Default: fills the measure.
+   .wide: escapes it. Change the breakout width here and every
+   figure on the site follows. This is why the class exists now
+   even though you have no figures yet. */
+
+figure { margin-inline: 0; }
+figure img { width: 100%; height: auto; display: block; }
+
+@media (min-width: 60rem) {
+  figure.wide {
+    width: 130%;
+    margin-inline: -15%;
+  }
+}
+
+
+/* --- Post list -------------------------------------------------
+   A list of links, not cards. No excerpts, no thumbnails. */
+
+ul.posts, ul.links {
+  list-style: none;
+  padding: 0;
+}
+
+ul.posts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: 0.5rem;
+}
+
+
+/* --- Code ------------------------------------------------------ */
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+
+
+body { font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; }
+pre, code { font-family: var(--mono); font-size: 0.9em; }
+
+:root {
+  --bg:     #F3F3EC;
+  --text:   #23261F;
+  --muted:  #6B6F64;
+  --accent: #35633A;
+}
+
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --bg:     #15171B; */
+/*     --text:   #D8DBE0; */
+/*     --muted:  #8A919C; */
+/*     --accent: #7FB2E8; */
+/*   } */
+/* } */
+
+body { background: var(--bg); color: var(--text); }
+a    { color: var(--accent); }
+time, figcaption { color: var(--muted); }
+
+/* ---------------------------------------------------------------
+   BELOW HERE IS YOURS. Nothing is set on purpose.
+
+   font-family     one face. Live with it a day before adding a second.
+   font-size       body copy, then let headings scale off it.
+   line-height     ~1.6 for body.
+   color           three values total: text, background, one accent.
+
+   Test before you add anything: does it read well with this file
+   empty? If not, a typeface will not fix it.
+   --------------------------------------------------------------- */
