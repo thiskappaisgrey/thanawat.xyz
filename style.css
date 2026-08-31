@@ -73,34 +73,158 @@ pre {
 body { font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; }
 pre, code { font-family: var(--mono); font-size: 0.9em; }
 
+
 :root {
-  --bg:     #F3F3EC;
-  --text:   #23261F;
-  --muted:  #6B6F64;
-  --accent: #35633A;
+	/* Rosé Pine Dawn */
+	--rp-base: hsl(32deg, 57%, 95%);
+	--rp-surface: hsl(35deg, 100%, 98%);
+	--rp-overlay: hsl(33deg, 43%, 91%);
+	--rp-muted: hsl(257deg, 9%, 61%);
+	--rp-subtle: hsl(248deg, 12%, 52%);
+	--rp-text: hsl(248deg, 19%, 40%);
+	--rp-love: hsl(343deg, 35%, 55%);
+	--rp-gold: hsl(35deg, 81%, 56%);
+	--rp-rose: hsl(3deg, 53%, 67%);
+	--rp-pine: hsl(197deg, 53%, 34%);
+	--rp-foam: hsl(189deg, 30%, 48%);
+	--rp-iris: hsl(268deg, 21%, 57%);
+	--rp-highlight-low: hsl(25deg, 35%, 93%);
+	--rp-highlight-med: hsl(10deg, 9%, 86%);
+	--rp-highlight-high: hsl(315deg, 4%, 80%);
 }
 
-/* @media (prefers-color-scheme: dark) { */
-/*   :root { */
-/*     --bg:     #15171B; */
-/*     --text:   #D8DBE0; */
-/*     --muted:  #8A919C; */
-/*     --accent: #7FB2E8; */
-/*   } */
-/* } */
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Rosé Pine */
+		--rp-base: hsl(249deg, 22%, 12%);
+		--rp-surface: hsl(247deg, 23%, 15%);
+		--rp-overlay: hsl(248deg, 25%, 18%);
+		--rp-muted: hsl(249deg, 12%, 47%);
+		--rp-subtle: hsl(248deg, 15%, 61%);
+		--rp-text: hsl(245deg, 50%, 91%);
+		--rp-love: hsl(343deg, 76%, 68%);
+		--rp-gold: hsl(35deg, 88%, 72%);
+		--rp-rose: hsl(2deg, 55%, 83%);
+		--rp-pine: hsl(197deg, 49%, 38%);
+		--rp-foam: hsl(189deg, 43%, 73%);
+		--rp-iris: hsl(267deg, 57%, 78%);
+		--rp-highlight-low: hsl(244deg, 18%, 15%);
+		--rp-highlight-med: hsl(249deg, 15%, 28%);
+		--rp-highlight-high: hsl(248deg, 13%, 36%);
+	
+		/* Rosé Pine Moon */
+		/* --rp-base: hsl(246deg, 24%, 17%); */
+		/* --rp-surface: hsl(248deg, 24%, 20%); */
+		/* --rp-overlay: hsl(248deg, 21%, 26%); */
+		/* --rp-muted: hsl(249deg, 12%, 47%); */
+		/* --rp-subtle: hsl(248deg, 15%, 61%); */
+		/* --rp-text: hsl(245deg, 50%, 91%); */
+		/* --rp-love: hsl(343deg, 76%, 68%); */
+		/* --rp-gold: hsl(35deg, 88%, 72%); */
+		/* --rp-rose: hsl(2deg, 66%, 75%); */
+		/* --rp-pine: hsl(197deg, 48%, 47%); */
+		/* --rp-foam: hsl(189deg, 43%, 73%); */
+		/* --rp-iris: hsl(267deg, 57%, 78%); */
+		/* --rp-highlight-low: hsl(245deg, 22%, 20%); */
+		/* --rp-highlight-med: hsl(247deg, 16%, 30%); */
+		/* --rp-highlight-high: hsl(249deg, 15%, 38%); */
+	}
+}
+body {
+  color: var(--rp-text);
+  background: var(--rp-base);
+}
 
-body { background: var(--bg); color: var(--text); }
-a    { color: var(--accent); }
-time, figcaption { color: var(--muted); }
+a {
+  color: var(--rp-foam);
+}
 
-/* ---------------------------------------------------------------
-   BELOW HERE IS YOURS. Nothing is set on purpose.
+a:hover {
+  color: var(--rp-iris);
+}
 
-   font-family     one face. Live with it a day before adding a second.
-   font-size       body copy, then let headings scale off it.
-   line-height     ~1.6 for body.
-   color           three values total: text, background, one accent.
+a:visited {
+  color: var(--rp-iris);
+}
 
-   Test before you add anything: does it read well with this file
-   empty? If not, a typeface will not fix it.
-   --------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--rp-text);
+}
+
+/* secondary/dimmed text */
+p, li {
+  color: var(--rp-text);
+}
+
+small, .muted, footer {
+  color: var(--rp-muted);
+}
+
+/* cards, panels, sidebars */
+.card, .panel, header, nav {
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-highlight-low);
+}
+
+/* buttons */
+button {
+  background: var(--rp-overlay);
+  color: var(--rp-text);
+  border: 1px solid var(--rp-highlight-med);
+}
+
+button:hover {
+  background: var(--rp-highlight-med);
+  border-color: var(--rp-highlight-high);
+}
+
+/* inputs */
+input, textarea, select {
+  background: var(--rp-surface);
+  color: var(--rp-text);
+  border: 1px solid var(--rp-highlight-med);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--rp-iris);
+  outline: none;
+}
+
+/* code blocks */
+code, pre {
+  background: var(--rp-overlay);
+  color: var(--rp-gold);
+}
+
+/* blockquotes */
+blockquote {
+  border-left: 3px solid var(--rp-pine);
+  color: var(--rp-subtle);
+}
+
+/* horizontal rule / dividers */
+hr {
+  border-color: var(--rp-highlight-low);
+}
+
+/* selection highlight */
+::selection {
+  background: var(--rp-highlight-med);
+  color: var(--rp-text);
+}
+
+/* scrollbar (webkit) */
+::-webkit-scrollbar-thumb {
+  background: var(--rp-overlay);
+}
+::-webkit-scrollbar-track {
+  background: var(--rp-base);
+}
+
+.icon [fill="#000000"] {
+  fill: var(--rp-text);
+}
+
+.icon [stroke="#000000"] {
+  stroke: var(--rp-text);
+}
