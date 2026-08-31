@@ -7,7 +7,7 @@
     // Option A: Link to an external CSS file
     html.link(rel: "stylesheet", href: "/style.css")
   )
-  #html.body(doc)
+  #html.body(html.main(doc))
 ])
 
 #title()
@@ -39,7 +39,7 @@ I love typst and diagrams and math formulas.
 $ a^2 + b^2 = c^2 $
 $ sum_(k=1)^n k = (n(n+1)) / 2 $
 
-#html.elem("div", attrs: (style: "display: flex; justify-content: center; align-items: cetner;"))[#html.frame(
+#html.elem("div", attrs: (style: "display: flex; justify-content: center; align-items: center;", class: "icon"))[#html.frame(
   diagram(cell-size: 15mm, $
           G edge(f, ->) edge("d", pi, ->>) & im(f) \
           G slash ker(f) edge("ur", tilde(f), "hook-->")
