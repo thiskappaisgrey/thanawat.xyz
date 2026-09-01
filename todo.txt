@@ -7,3 +7,4 @@
 2026-09-01 Religion is teaching, not institution. +blog
 2026-09-01 What is an API? +coding
 2026-09-01 Building your own circuit python project +coding
+2026-09-01 The Camel, the Lion, and the Child
