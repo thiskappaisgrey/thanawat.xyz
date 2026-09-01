@@ -1,0 +1,8 @@
+:root {
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --mono:  ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+           Consolas, "DejaVu Sans Mono", monospace;
+}
+
+body { font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; }
+pre, code { font-family: var(--mono); font-size: 0.9em; }

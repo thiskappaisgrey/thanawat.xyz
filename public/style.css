@@ -1,0 +1,230 @@
+/* ---------------------------------------------------------------
+   Structure only. Typography and colour are deliberately unset.
+   Those are yours to decide — steps 4 and 5.
+   --------------------------------------------------------------- */
+
+/* The measure. The single most consequential number on the site.
+   65-75 characters per line. Tune the ch value, not the px. */
+main {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 6rem;
+}
+
+/* Vertical rhythm comes from one variable, not scattered margins. */
+:root {
+  --space: 1.5rem;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --mono:  ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+                   Consolas, "DejaVu Sans Mono", monospace;
+}
+
+p, ul, ol, pre, blockquote, figure {
+  margin-block: var(--space);
+}
+
+h1, h2, h3 {
+  margin-block: calc(var(--space) * 1.5) var(--space);
+}
+
+
+/* --- Figures ---------------------------------------------------
+   Default: fills the measure.
+   .wide: escapes it. Change the breakout width here and every
+   figure on the site follows. This is why the class exists now
+   even though you have no figures yet. */
+
+figure { margin-inline: 0; }
+figure img { width: 100%; height: auto; display: block; }
+
+@media (min-width: 60rem) {
+  figure.wide {
+    width: 130%;
+    margin-inline: -15%;
+  }
+}
+
+
+/* --- Post list -------------------------------------------------
+   A list of links, not cards. No excerpts, no thumbnails. */
+
+ul.posts, ul.links {
+  list-style: none;
+  padding: 0;
+}
+
+ul.posts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: 0.5rem;
+}
+
+
+/* --- Code ------------------------------------------------------ */
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+
+
+body { font-family: var(--serif); font-size: 1.125rem; line-height: 1.6; }
+pre, code { font-family: var(--mono); font-size: 0.9em; }
+
+
+:root {
+	/* Rosé Pine Dawn */
+	--rp-base: hsl(32deg, 57%, 95%);
+	--rp-surface: hsl(35deg, 100%, 98%);
+	--rp-overlay: hsl(33deg, 43%, 91%);
+	--rp-muted: hsl(257deg, 9%, 61%);
+	--rp-subtle: hsl(248deg, 12%, 52%);
+	--rp-text: hsl(248deg, 19%, 40%);
+	--rp-love: hsl(343deg, 35%, 55%);
+	--rp-gold: hsl(35deg, 81%, 56%);
+	--rp-rose: hsl(3deg, 53%, 67%);
+	--rp-pine: hsl(197deg, 53%, 34%);
+	--rp-foam: hsl(189deg, 30%, 48%);
+	--rp-iris: hsl(268deg, 21%, 57%);
+	--rp-highlight-low: hsl(25deg, 35%, 93%);
+	--rp-highlight-med: hsl(10deg, 9%, 86%);
+	--rp-highlight-high: hsl(315deg, 4%, 80%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Rosé Pine */
+		--rp-base: hsl(249deg, 22%, 12%);
+		--rp-surface: hsl(247deg, 23%, 15%);
+		--rp-overlay: hsl(248deg, 25%, 18%);
+		--rp-muted: hsl(249deg, 12%, 47%);
+		--rp-subtle: hsl(248deg, 15%, 61%);
+		--rp-text: hsl(245deg, 50%, 91%);
+		--rp-love: hsl(343deg, 76%, 68%);
+		--rp-gold: hsl(35deg, 88%, 72%);
+		--rp-rose: hsl(2deg, 55%, 83%);
+		--rp-pine: hsl(197deg, 49%, 38%);
+		--rp-foam: hsl(189deg, 43%, 73%);
+		--rp-iris: hsl(267deg, 57%, 78%);
+		--rp-highlight-low: hsl(244deg, 18%, 15%);
+		--rp-highlight-med: hsl(249deg, 15%, 28%);
+		--rp-highlight-high: hsl(248deg, 13%, 36%);
+	
+		/* Rosé Pine Moon */
+		/* --rp-base: hsl(246deg, 24%, 17%); */
+		/* --rp-surface: hsl(248deg, 24%, 20%); */
+		/* --rp-overlay: hsl(248deg, 21%, 26%); */
+		/* --rp-muted: hsl(249deg, 12%, 47%); */
+		/* --rp-subtle: hsl(248deg, 15%, 61%); */
+		/* --rp-text: hsl(245deg, 50%, 91%); */
+		/* --rp-love: hsl(343deg, 76%, 68%); */
+		/* --rp-gold: hsl(35deg, 88%, 72%); */
+		/* --rp-rose: hsl(2deg, 66%, 75%); */
+		/* --rp-pine: hsl(197deg, 48%, 47%); */
+		/* --rp-foam: hsl(189deg, 43%, 73%); */
+		/* --rp-iris: hsl(267deg, 57%, 78%); */
+		/* --rp-highlight-low: hsl(245deg, 22%, 20%); */
+		/* --rp-highlight-med: hsl(247deg, 16%, 30%); */
+		/* --rp-highlight-high: hsl(249deg, 15%, 38%); */
+	}
+}
+body {
+  color: var(--rp-text);
+  background: var(--rp-base);
+}
+
+a {
+  color: var(--rp-foam);
+}
+
+a:hover {
+  color: var(--rp-iris);
+}
+
+a:visited {
+  color: var(--rp-iris);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--rp-text);
+}
+
+/* secondary/dimmed text */
+p, li {
+  color: var(--rp-text);
+}
+
+small, .muted, footer {
+  color: var(--rp-muted);
+}
+
+/* cards, panels, sidebars */
+.card, .panel, header, nav {
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-highlight-low);
+}
+
+/* buttons */
+button {
+  background: var(--rp-overlay);
+  color: var(--rp-text);
+  border: 1px solid var(--rp-highlight-med);
+}
+
+button:hover {
+  background: var(--rp-highlight-med);
+  border-color: var(--rp-highlight-high);
+}
+
+/* inputs */
+input, textarea, select {
+  background: var(--rp-surface);
+  color: var(--rp-text);
+  border: 1px solid var(--rp-highlight-med);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--rp-iris);
+  outline: none;
+}
+
+/* code blocks */
+code, pre {
+  background: var(--rp-overlay);
+  color: var(--rp-gold);
+}
+
+/* blockquotes */
+blockquote {
+  border-left: 3px solid var(--rp-pine);
+  color: var(--rp-subtle);
+}
+
+/* horizontal rule / dividers */
+hr {
+  border-color: var(--rp-highlight-low);
+}
+
+/* selection highlight */
+::selection {
+  background: var(--rp-highlight-med);
+  color: var(--rp-text);
+}
+
+/* scrollbar (webkit) */
+::-webkit-scrollbar-thumb {
+  background: var(--rp-overlay);
+}
+::-webkit-scrollbar-track {
+  background: var(--rp-base);
+}
+
+.icon [fill="#000000"] {
+  fill: var(--rp-text);
+}
+
+.icon [stroke="#000000"] {
+  stroke: var(--rp-text);
+}
