@@ -119,6 +119,14 @@ posts, but maybe it's good for you yourself to think about what it means!
   recalling the old and when he forgets his native tongue.
 ]
 
+#quote(attribution: [Ralph Ellison - from Invisible Man])[
+  All my life I had been looking for something, and everywhere I turned someone
+  tried to tell me what it was. I accepted their answers too, though they were
+  often in contradiction and even self-contradictory. I was naive. I was
+  looking for myself and asking everyone except myself questions which I, and
+  only I, could answer.
+]
+
 = Music. Most are sad music.
 - #link("https://www.youtube.com/watch?v=Xkzp6cTBhJc")[Be Yourself]
 - #link("https://www.youtube.com/watch?v=ioJizJ93DdQ")[Rex's Blues]

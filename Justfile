@@ -26,6 +26,7 @@ watch file_prefix=`find content -name '*.typ' | sed 's/\.typ$//' | fzf`:
 
 serve:
         devd -ol ./public
+publish: deploy
 deploy: 
         #!/usr/bin/env bash
         cp -r ./public/* ./publish/
